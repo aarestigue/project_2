@@ -22,26 +22,27 @@ Everyone who wants to participate has access to the application, where they can 
 | GET        | /signup                                | Renders sign up form data to the server    |                 |
 | POST       | /signup                                | Sends login data to the serve              |                 |
 | GET        | /:id/profile                           | Shows profile page.                        |                 |
-| GET        | /:id/profile/update                    | Sends login data to the serve              |                 |
-| POST       | /:id/profile/update                    | Sends login data to the serve              |                 |
-| POST       | /:id/profile/favorites                 | Sends login data to the serve              |                 |
-| POST       | /:id/profile/delete                    | Sends login data to the serve              |                 |
-| POST       | /:id/profile/playlists/create          | Sends login data to the serve              |                 |
-| POST       | /:id/profile/playlists                 | Sends login data to the serve              |                 |
-| GET        | /:id/profile/playlists/playlistId      | Sends login data to the serve              |                 |
-| POST       | /:id/profile/playlists/playlistId/edit | Sends login data to the serve              |                 |
-| GET        | /:id/profile/playlistId/delete         | Sends login data to the serve              |                 |
-| POST       | /:id/profile/parties                   | Sends login data to the serve              |                 |
-| POST       | /:id/profile/parties/create            | Sends login data to the serve              |                 |
-| GET        | /:id/profile/parties/partieId          | Sends login data to the serve              |                 |
-| POST       | /:id/profile/parties/partieId/edit     | Sends login data to the serve              |                 |
-| POST       | /:id/profile/parties/partieId/invite   | Sends login data to the serve              |                 |
-| POST       | /:id/profile/parties/partieId/videos   | Sends login data to the serve              |                 |
-| POST       | /:id/profile/parties/partieId/videos/create   | Sends login data to the serve                   |                 |
+| GET        | /:id/profile/update                    | Renders update form.                        |                 |
+| POST       | /:id/profile/update                    | Shows the updated profile.                  |                 |
+| POST       | /:id/profile/favorites                 | Renders 5 songs played the most             |                 |
+| POST       | /:id/profile/delete                    | Private. Deletes user's profile             |                 |
+| POST       | /:id/profile/playlists/create          | Renders the form to create a playlist       |                 |
+| POST       | /:id/profile/playlists                 | Renders all the user's created playlists    |                 |
+| GET        | /:id/profile/playlists/playlistId      | Renders one playslist details               |                 |
+| POST       | /:id/profile/playlists/playlistId/edit | Adds new songs to a playlist                |                 |
+| GET        | /:id/profile/playlistId/delete         | Removes a playlist                          |                 |
+| POST       | /:id/profile/parties                   | Renders all the parties the user is part of |                 |
+| GET        | /:id/profile/parties/create            | Renders the form to create a party          |                 |
+| GET        | /:id/profile/parties/partieId          | Renders the detail one party.               |                 |
+| POST       | /:id/profile/parties/partieId/edit     | Adds new songs to the party                 |                 |
+| POST       | /:id/profile/parties/partieId/invite   | Add new users to the party.                 |                 |
+| POST       | /:id/profile/parties/partieId/videos   | Renders all videos posted for one party     |                 |
+| POST       | /:id/profile/parties/partieId/videos/create   | Renders a form to post videos from the party      |                 |
 | POST       | /:id/profile/parties/partieId/videos/videoId  | See details and comments of a video             |                 |
-| GET        | /:id/profile/partiesId/delete          | Sends login data to the serve              |                 |
-| POST       | /:id/profile/followers                 | Sends login data to the serve              |                 |
-| GET        | /parties/partieId                      | Sends login data to the serve              |                 |
+| GET        | /:id/profile/partiesId/delete          | Removes one party.                         |                 |
+| POST       | /:id/profile/followers                 | Renders all the followers from one user              |                 |
+| POST       | /:id/profile/following                 | Renders all the users one user follows             |                 |
+| GET        | /parties/partieId                      | Renders one party details            |                 |
 
  
  
