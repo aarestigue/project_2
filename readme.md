@@ -14,30 +14,34 @@ Everyone who wants to participate has access to the application, where they can 
 
 # ROUTES
 
-|   Method   | Route                                  | Description                      | Request - body  |
-| -----------| -------------------------------        | ----------------------------     |---------------- |
-| John       | /                                      | Home                             | NewYork         |
-| GET        | /login                                 | Renders login form view.         |                 |
-| POST       | /login                                 | Sends login data to the serve    |                 |
-| GET        | /signup                                | Sends login data to the serve    |                 |
-| POST       | /signup                                | Sends login data to the serve    |                 |
-| GET        | /:id/profile                           | Shows profile page.              |                 |
-| GET        | /:id/profile/update                    | Sends login data to the serve    |                 |
-| POST       | /:id/profile/update                    | Sends login data to the serve    |                 |
-| POST       | /:id/profile/favorites                 | Sends login data to the serve    |                 |
-| POST       | /:id/profile/delete                    | Sends login data to the serve    |                 |
-| POST       | /:id/profile/playlists/create          | Sends login data to the serve    |                 |
-| POST       | /:id/profile/playlists                 | Sends login data to the serve    |                 |
-| GET        | /:id/profile/playlists/playlistId      | Sends login data to the serve    |                 |
-| POST       | /:id/profile/playlists/playlistId/edit | Sends login data to the serve    |                 |
-| GET        | /:id/profile/playlistId/delete         | Sends login data to the serve    |                 |
-| POST       | /:id/profile/parties                   | Sends login data to the serve    |                 |
-| POST       | /:id/profile/parties/create            | Sends login data to the serve    |                 |
-| GET        | /:id/profile/parties/partieId          | Sends login data to the serve    |                 |
-| POST       | /:id/profile/parties/partieId/edit     | Sends login data to the serve    |                 |
-| POST       | /:id/profile/parties/partieId/invite   | Sends login data to the serve    |                 |
-| GET        | /:id/profile/partiesId/delete          | Sends login data to the serve    |                 |
-| GET        | /parties/partieId                      | Sends login data to the serve    |                 |
+|   Method   | Route                                  | Description                                | Request - body  |
+| -----------| -------------------------------        | -----------------------------------------  |---------------- |
+| John       | /                                      | Home                                       |                 |
+| GET        | /login                                 | Renders login form view.                   |                 |
+| POST       | /login                                 | Sends login data to the serve              |                 |
+| GET        | /signup                                | Renders sign up form data to the server    |                 |
+| POST       | /signup                                | Sends login data to the serve              |                 |
+| GET        | /:id/profile                           | Shows profile page.                        |                 |
+| GET        | /:id/profile/update                    | Sends login data to the serve              |                 |
+| POST       | /:id/profile/update                    | Sends login data to the serve              |                 |
+| POST       | /:id/profile/favorites                 | Sends login data to the serve              |                 |
+| POST       | /:id/profile/delete                    | Sends login data to the serve              |                 |
+| POST       | /:id/profile/playlists/create          | Sends login data to the serve              |                 |
+| POST       | /:id/profile/playlists                 | Sends login data to the serve              |                 |
+| GET        | /:id/profile/playlists/playlistId      | Sends login data to the serve              |                 |
+| POST       | /:id/profile/playlists/playlistId/edit | Sends login data to the serve              |                 |
+| GET        | /:id/profile/playlistId/delete         | Sends login data to the serve              |                 |
+| POST       | /:id/profile/parties                   | Sends login data to the serve              |                 |
+| POST       | /:id/profile/parties/create            | Sends login data to the serve              |                 |
+| GET        | /:id/profile/parties/partieId          | Sends login data to the serve              |                 |
+| POST       | /:id/profile/parties/partieId/edit     | Sends login data to the serve              |                 |
+| POST       | /:id/profile/parties/partieId/invite   | Sends login data to the serve              |                 |
+| POST       | /:id/profile/parties/partieId/videos   | Sends login data to the serve              |                 |
+| POST       | /:id/profile/parties/partieId/videos/create   | Sends login data to the serve                   |                 |
+| POST       | /:id/profile/parties/partieId/videos/videoId  | See details and comments of a video             |                 |
+| GET        | /:id/profile/partiesId/delete          | Sends login data to the serve              |                 |
+| POST       | /:id/profile/followers                 | Sends login data to the serve              |                 |
+| GET        | /parties/partieId                      | Sends login data to the serve              |                 |
 
  
  
