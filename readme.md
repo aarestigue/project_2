@@ -2,14 +2,17 @@
 
 (https://github.com/louisrabit/read-me/blob/main/LICENSE) --- mudar para badge 
 
-# Sobre o projeto
+# About the project
 
-![Project Link](post here the project link)
+Problems: 
+Organize Karaoke days
+Give everyone a chance to pick their favorite music
+Avoid staying with only one type of music for too long
 
-WWk  is a  Full-stack Web Application ,  build on second week of Bootcamp , in [IronHackLisbon](https://www.ironhack.com/en/lisbon?utm_source=google&utm_medium=cpc&utm_campaign=LIS_Portugal_Lisboa_Global_Search_Brand_EN&utm_content=search-brand&utm_term=ironhack%20lisbon) 
- 
-This application aims to provide students, staff with a unique moment of relaxation and conviviality, in future editions friday karaoke party .
-Everyone who wants to participate has access to the application, where they can choose the songs they want to interpret.
+Our solution:
+WWK is a tool that makes karaoke party organization easier. 
+Everyone at the party can choose their favorite music to sing and not have to worry about the order being respected!
+This tool is recommended for all karaoke lovers and friends. With extras, the app will provide share, public and save the moments of intense fun.
 
 
 # ROUTES
@@ -46,12 +49,6 @@ Everyone who wants to participate has access to the application, where they can 
 
  
  
-
-
-
-
-
-
 # MVP Requirements
 
 ## User stories
@@ -80,13 +77,19 @@ Everyone who wants to participate has access to the application, where they can 
 - Have coments 
 - Live stream 
  
-
+# Getting Start ( what the user needs to have acess/ use the app)
+The user to be able to use the platform will have the option to register if he wants, first to create a personal account, and also have an option without authorization of entry, will have limited access to use it .
 
 
 # Models
 
+Profile model { name , email , password , favorites } 
+Playlist
+Party
+Song
+Post
 
-# Tecnologias 
+# Technologies
 
 ## Back end
 
@@ -128,18 +131,14 @@ Everyone who wants to participate has access to the application, where they can 
 
 # API"s
 
-???????
-
-
-
+(https://www.karafun.es/developers/)
+(https://developers.google.com/identity/sign-in/web/sign-in)
 
 
 # Backlog
 
 ![](https://trello.com/b/Ni3giVKf/ironhackproject)
 
- # Links
- ![texto a por ](aqui link da imagem)
  
  ### Git
  
