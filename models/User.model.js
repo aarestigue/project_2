@@ -5,9 +5,27 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      // unique: true -> Ideally, should be unique, but its up to you
+      trim: true,
+      required: [true, 'Username is required'],
+      unique: [true, 'Username is already taken'],
     },
-    password: String,
+
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+      lowercase: true,
+      match: [/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g, 'Please use a valid email address'],
+    },
+
+    password: {
+      type: String,
+      required: true,
+
+    }
+
+    /*  comments : [{type : Schema.Types.ObjectId, ref: 'Comments'}], */
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
