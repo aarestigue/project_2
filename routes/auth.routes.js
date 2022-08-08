@@ -1,5 +1,10 @@
 const router = require("express").Router();
+const axios = require('axios');
+const apiKey = "AIzaSyAHtdN-WUB36KHir7qT7cWLfUXY9tqNyjs";
+const baseUrl = "https://www.googleapis.com/youtube/v3";
 
+
+const ApiService = require("../services/api.service")
 // ℹ️ Handles password encryption
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
@@ -13,6 +18,15 @@ const User = require("../models/User.model");
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
+
+router.get ("/search", (req, res) => {
+  const searchQuery = req.query.search_query;
+  /* const url = `${baseUrl}/search?key=${apiKey}&type=video&part=snnipet&q=${searchQuery}`;
+
+  const response = await axios.get(url); */
+  console.log("response");
+  res.send(searchQuery)
+})
 
 router.get("/signup", isLoggedOut, (req, res) => {
   res.render("auth/signup");
