@@ -10,19 +10,21 @@ const songSchema = new Schema(
     unique : [true, 'Username is already taken'],
     trim: true,
 },
+
 imageUrl : String,
-duration: Number , 
+
+duration: Number ,
+
 genre: String, 
+
    },
 
-
- 
-  {
+{
     // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,
   }
 );
 
-const User = model("User", userSchema);
+const Song = model("Song", songSchema);
 
-module.exports = User;
+module.exports = Song;
