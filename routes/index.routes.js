@@ -16,6 +16,8 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
+// SEARCH
+
 router.get ("/search", async (req, res, next) => {
 try {
   const searchQuery = req.query.search_query;
@@ -38,6 +40,12 @@ try {
   catch (err) {next(err)}; 
   
   
+})
+
+// KARAOKE
+
+router.get ("/party/karaoke", async (req, res, next) => {
+  res.render('karaoke')
 })
 
 module.exports = router;
