@@ -4,7 +4,7 @@ const { Schema, model } = require("mongoose");
 const partySchema = new Schema(
   {
     creator: String,
-    contributors : [{type : Schema.Types.ObjectId, ref: 'User'}],
+    contributors : [/* {type : Schema.Types.ObjectId, ref: 'User'} */String],
     songs : [{type : Schema.Types.ObjectId, ref: 'Song'}],
     name : {
         type : String,
@@ -24,4 +24,4 @@ const partySchema = new Schema(
 
 const Party = model("Party", partySchema);
 
-module.exports = User;
+module.exports = Party;

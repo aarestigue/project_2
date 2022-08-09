@@ -28,10 +28,26 @@ const index = require("./routes/index.routes");
 app.use("/", index);
 
 const authRoutes = require("./routes/auth.routes");
-app.use("/auth", authRoutes);
+app.use("/", authRoutes);
+
+// AUTH ROUTES
+
+const signUp = require("./routes/auth.routes");
+app.use("/signup", signUp);
+
+
+// INDEX ROUTES
 
 const search = require("./routes/index.routes");
 app.use("/search", search);
+
+const userProfile = require("./routes/index.routes");
+app.use("/users/profile", userProfile);
+
+const createParty = require("./routes/index.routes");
+app.use("/party/create", createParty);
+
+
 
 const karaoke = require("./routes/index.routes");
 app.use("/party/karaoke", karaoke);

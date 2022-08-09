@@ -1,0 +1,29 @@
+<H1>{{name}}</H1>
+
+<form action="/{{creator}}/party/{{name}}" method="get">
+<label for="search">Find your song</label>
+<input type="text" name="search" id="search" value="" >
+
+
+<button type="submit">search</button>
+
+</form>
+
+<div>
+{{#each songQuery}}
+
+<li>{{this.snippet.title}}</li>
+<form action="/add-song/{{this.id.videoId}}" method="post" id="{{this.id.videoId}}" ><button>Add</button></form>
+
+{{/each}}
+
+</div>
+
+
+{{!-- <div>
+{{#each songs }}
+
+<li>{{}}</li>
+{{/each}}
+</div> --}}
+

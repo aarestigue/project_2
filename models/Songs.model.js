@@ -3,8 +3,7 @@ const { Schema, model } = require("mongoose");
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const songSchema = new Schema(
   {
-   artist: String,
-   name : {
+   title : {
     type : String,
     required : [true, 'The name is required'],
     unique : [true, 'Username is already taken'],
@@ -13,9 +12,9 @@ const songSchema = new Schema(
 
 imageUrl : String,
 
-duration: Number ,
+description: Number ,
 
-genre: String, 
+url: String, 
 
    },
 

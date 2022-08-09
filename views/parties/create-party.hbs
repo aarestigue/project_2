@@ -1,0 +1,30 @@
+<h1>Create a Party</h1>
+
+<div>
+<form  method="post" action="/{{username}}/create-party" enctype="multipart/form-data">
+
+<label for="name">Party name</label>
+<input type="text" name="name" id="name" />
+
+<label for="creator">Creator</label>
+<input type="text" name="creator" id="creator" value="{{username}}" />
+
+<label for="contributors">Contributors</label>
+
+
+<select name="contributors" name="contributors" id="contributors"  size="2" multiple>
+    {{#each allUsers}}
+    <option value="{{this._id}}" >{{this.username}}</option>
+    {{/each}}
+</select>
+
+
+<div>
+<label for='imageUrl'>Party Image</label>
+<input type='file' name='imageUrl' id='imageUrl' class='form-control-file' />
+</div>
+
+ <button type='submit' class='btn btn-primary'>Create Party!</button>
+
+</form>
+</div>

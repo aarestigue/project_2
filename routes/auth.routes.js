@@ -4,6 +4,8 @@ const apiKey = "AIzaSyAHtdN-WUB36KHir7qT7cWLfUXY9tqNyjs";
 const baseUrl = "https://www.googleapis.com/youtube/v3";
 
 
+
+
 const ApiService = require("../services/api.service")
 // ℹ️ Handles password encryption
 const bcrypt = require("bcrypt");
@@ -19,25 +21,24 @@ const User = require("../models/User.model");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
-router.get ("/search", (req, res) => {
-  const searchQuery = req.query.search_query;
-  /* const url = `${baseUrl}/search?key=${apiKey}&type=video&part=snnipet&q=${searchQuery}`;
 
-  const response = await axios.get(url); */
-  console.log("response");
-  res.send(searchQuery)
-})
 
 router.get("/signup", isLoggedOut, (req, res) => {
   res.render("auth/signup");
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { username, password } = req.body;
+  const { username, email, password } = req.body;
 
   if (!username) {
     return res.status(400).render("auth/signup", {
       errorMessage: "Please provide your username.",
+    });
+  }
+
+  if (!email) {
+    return res.status(400).render("auth/signup", {
+      errorMessage: "Please provide your email.",
     });
   }
 
@@ -65,7 +66,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
     if (found) {
       return res
         .status(400)
-        .render("auth.signup", { errorMessage: "Username already taken." });
+        .render("auth/signup", { errorMessage: "Username already taken." });
     }
 
     // if user is not found, create a new user - start with hashing the password
@@ -76,13 +77,15 @@ router.post("/signup", isLoggedOut, (req, res) => {
         // Create a user and save it in the database
         return User.create({
           username,
+          email,
           password: hashedPassword,
         });
       })
       .then((user) => {
         // Bind the user to the session object
+        
         req.session.user = user;
-        res.redirect("/");
+        res.redirect(`/${user.username}/profile`);
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
