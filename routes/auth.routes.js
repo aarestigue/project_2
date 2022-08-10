@@ -171,6 +171,12 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 });
 
 router.get("/logout", isLoggedIn, (req, res) => {
+  const {username} = req.params;
+  User.findOne({ username })
+    .then((user) => {
+  req.app.locals.loggedOutUser = user;
+    })
+
   req.session.destroy((err) => {
     if (err) {
       return res
@@ -180,6 +186,7 @@ router.get("/logout", isLoggedIn, (req, res) => {
     console.log('log out')
     res.redirect("/");
   });
+  
 });
 
 module.exports = router;
