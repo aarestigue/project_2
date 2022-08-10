@@ -166,5 +166,46 @@ body{
 }
 
 
+/* css finish  index page */
+
+
+/* <div class="container">
+    <form action="/login" method="POST">
+   <label> Username
+      <input type="text" name="username" value="{{username}}">
+   </label>
+   <label> Password
+      <input type="password" name="password">
+   </label>
+
+   <button type="submit">Submit</button> 
+</form>
+ 
+</div>
+ */
+
+ .container {
+  width: 100px;
+  height: 100px;
+  padding: 50px;
+ align-items: center;
+  justify-content: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+    
+ }
+
+
+ 
+
+
+
+
+
+
 
 
