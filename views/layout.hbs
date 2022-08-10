@@ -21,10 +21,14 @@
             <div class="right" id="session-btn">
                </select>
                {{#if loggedInUser}}
-                <button><a href="/logout">Logout</a></button>
-                {{else}}
+                <button><a href="/logout/{{username}}">Logout</a></button>
+               {{else}}
                 <button><a href="/login">Login</a></button>
-                {{/if}}
+              {{/if}}
+              {{#if loggedOutUser}}
+                <button><a href="/login">Login</a></button>
+              {{/if}}
+                
             </div>
         </nav>
 
