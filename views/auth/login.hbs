@@ -8,28 +8,29 @@
 
    <button type="submit">Submit</button> 
 </form> --}}
+<section class="section">
 
-
-<div class="Logincontainer">
+<div class="Logincontainer"> 
     <form action="/login" method="POST">
-
- <div class="fieldusername"> 
+<h1 title="Login Session" class="form-title">Sign In</h1>
+ <div class="form-field"> 
    <label> {{!-- Username --}}
       <input type="text" name="username" value="{{username}}"  placeholder="USERNAME" class="form-field" >
    </label>
 </div>
 
-    <div class="fieldpassword"> 
+    <div class="form-field"> 
    <label> {{!-- Password --}}
       <input type="password" name="password" placeholder="PASSWORD" class="form-field">
    </label> 
  </div> 
- <button type="submit" class="form-button">Login</button> 
+ <button type="submit" class="form-button">Sign In</button> 
 
 
 </form>
-</div>
 
+</div>
+</section>
 {{#if errorMessage}}
    {{errorMessage}}
 {{/if}}
