@@ -1,4 +1,5 @@
 <form action="/signup" method="POST">
+
    <label> Username
       <input type="text" name="username" id="username">
    </label>
@@ -20,8 +21,9 @@
    </label>
 
    <button type="submit">Sign up!</button>
-</form>
-
-{{#if errorMessage}}
+   {{#if errorMessage}}
    {{errorMessage}}
 {{/if}}
+</form>
+
+

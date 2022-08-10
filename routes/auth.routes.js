@@ -91,7 +91,7 @@ router.post("/signup", isLoggedOut,  (req, res) => {
         
         req.session.user = user;
         req.app.locals.loggedInUser = user
-        res.redirect(`/${user.username}/profile`);
+        res.redirect(`/${username}/profile`);
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
@@ -114,13 +114,13 @@ router.post("/signup", isLoggedOut,  (req, res) => {
 
 //LOGIN
 
-router.get ("/login-username", isLoggedOut, (req,res)=> {
+router.get ("/login-create", /* isLoggedOut,  */(req,res)=> {
   const username = req.query;
   console.log(username)
   res.render("auth/login", username);
 })
 
-router.get("/login", isLoggedOut, (req, res) => {
+router.get("/login", /* isLoggedOut,  */(req, res) => {
   res.render("auth/login");
 });
 
@@ -162,7 +162,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         req.app.locals.loggedInUser = user
         console.log(req.app.locals.loggedInUser)
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
-        return res.redirect(`/${username}/profile`);
+        return res.redirect(`/${user.username}/profile`);
       });
       
       

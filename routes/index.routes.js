@@ -23,6 +23,7 @@ const youtube = google.youtube({
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
+const { response } = require("../app");
 
 
 
@@ -105,9 +106,13 @@ try {
 router.get ("/:username/profile", (req, res, next) => {
   const username= req.params.username;
   const user = req.session.user
+  const {userId} = user._id
+  console.log(userId)
+ User.findOne(userId)
+  .then((response)=> res.render('users/profile', {username, user, response}))
+
   
-  res.render('users/profile', {username, user})
-})
+}) 
 
 //DELETE USER
 
@@ -160,7 +165,7 @@ router.get ("/:username/edit", (req, res, next) => {
 
 router.post ("/:username/edit", fileUploader.single('imageUrl'), (req, res, next) => {
   
-  const {username, email, password, name, last_name, previousUrl} = req.body;
+  const {username, email, name, last_name, previousUrl} = req.body;
 
   let imageUrl;
 
@@ -170,7 +175,7 @@ router.post ("/:username/edit", fileUploader.single('imageUrl'), (req, res, next
     imageUrl = previousUrl;
   }
 
-  User.findOneAndUpdate({username:username, email:email, password:password, name:name, last_name:last_name, imageUrl:imageUrl })
+  User.findOneAndUpdate({username, email, name, last_name, imageUrl })
   .then((user)=> res.redirect(`/${username}/profile`))
   
 
