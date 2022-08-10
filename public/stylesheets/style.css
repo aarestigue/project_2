@@ -1,3 +1,6 @@
+/* Css to index Page!!! */
+
+
 *{
   padding: 0;
   margin: 0;
@@ -12,14 +15,14 @@ body{
   font-family: "Times New Roman", Times, serif;
 }
 
-.container .navbar{
+/* .container */ .navbar{
   height: 86px;
   display: flex;
   background-color: rgb(3, 1, 1);
   
 }
 
-.container .navbar .right{
+/* .container  */.navbar .right{
   display: flex;
   height: 85px;
   float: right;
@@ -28,7 +31,7 @@ body{
 }
 
 
-.container .navbar .right button{
+/* .container */ .navbar .right button{
   margin: auto;
   align-items: center;
   justify-content: center;
@@ -41,12 +44,12 @@ body{
   border-radius: 50px;
   border-color: aliceblue;
 }
-.container .navbar .right button a{
+/* .container */ .navbar .right button a{
   text-decoration: none;
   color: rgb(255, 255, 255);
 
 }
-.container .title{
+/* .container */ .title{
   padding: 250px 45px;
 }
 /* .container {
@@ -161,3 +164,7 @@ body{
   align-items: center;
 
 }
+
+
+
+
