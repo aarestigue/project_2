@@ -40,6 +40,8 @@ app.use("/signup", signUp);
 
 // INDEX ROUTES
 
+
+
 const search = require("./routes/index.routes");
 app.use("/search", search);
 

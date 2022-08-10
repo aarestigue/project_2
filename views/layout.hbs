@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>{{appTitle}}</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/profile.css" />
   </head>
 
   <body>
@@ -21,7 +22,10 @@
             <div class="right" id="session-btn">
                </select>
                {{#if loggedInUser}}
-                <button><a href="/logout/{{username}}">Logout</a></button>
+
+               <button><a href="/{{username}}/profile">Profile</a></button>
+                <button><a href="/{{username}}/logout ">Logout</a></button>
+                
                {{else}}
                 <button><a href="/login">Login</a></button>
               {{/if}}

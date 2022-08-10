@@ -1,0 +1,21 @@
+.profile-menu {
+    display: flex;
+}
+
+.profile-container {
+   width: 70vw;
+   height: 30vh;
+   border-style: none;
+   border: 10px;
+   border-color: white;
+   padding: 10px;
+   background-color: grey;
+   border-radius: 15px;
+
+}
+
+.profile-parties-menu {
+    display: flex;
+    padding: 10px;
+}
+

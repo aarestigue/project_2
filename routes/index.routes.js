@@ -85,9 +85,27 @@ try {
 
 router.get ("/:username/profile", (req, res, next) => {
   const username= req.params.username;
-  console.log(username)
+  
   res.render('users/profile', {username})
 })
+
+//DELETE USER
+
+router.get ("/:username/delete", (req, res, next)=>{
+  console.log('delete')
+  const {username} = req.params
+  User.findOneAndDelete({username : username})
+  .then((response)=> res.redirect("/"))
+  .catch((err) => next(err))
+})
+
+//EDIT USER
+
+router.post ("/:username/edit", (req, res, next) => {
+  const {username} = req.params
+  res.render('users/profile-edit', username)
+} )
+
 
 //CREATE PARTY
 

@@ -1,7 +1,35 @@
-<h1>Welcome</h1>
+<div class="profile-menu">
+<h1>Hello {{username}}</h1>
+<img src="/images/party_default.jpeg" alt="" width="50"/>
+
+</div>
+
+<div>
+    
+    <a href="/{{username}}/edit " >Edit profile</a>
+    <a href="/{{username}}/delete " method="get" action="/{{username}}/delete">Delete profile</a>
+    <a href="/{{username}}/logout " >Log out</a>
+
+</div>
+
+<section id="user-parties" class="profile-container">
+
+<div class="profile-parties-menu">
+
+<h3>Your Parties</h3>
+<img src="/images/add.png" alt="" width="20"/>
+<a href="/{{username}}/create-party " >New party</a>
+
+</div>
+
+<div class="party-card">
+    <a href=""><img src="/images/party_default.jpeg" alt="" width="50"/></a>
+    <a href=""><h6>Party name </h6></a>
+</div>
+
+</section>
 
 
 
-    <a href="/{{username}}/create-party " >Create a Party</a>
    
     
