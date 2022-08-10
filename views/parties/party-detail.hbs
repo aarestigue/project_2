@@ -15,6 +15,7 @@
 {{#each data.songQuery}}
 
 <li>{{this.snippet.title}}</li>
+
 <form action="/add-song/{{this.id.videoId}}/{{../data.party._id}}/{{this.snippet.title}}" method="post" id="{{this.id.videoId}}" >
 <input type="text" name="songId" value="{{this.id.videoId}}" hidden>
 <input type="text" name="'songTitle" value="{{this.snippet.title}}" id="songTitle" hidden>

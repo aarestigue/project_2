@@ -36,6 +36,8 @@ const signUp = require("./routes/auth.routes");
 app.use("/signup", signUp);
 
 
+
+
 // INDEX ROUTES
 
 const search = require("./routes/index.routes");
