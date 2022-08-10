@@ -5,7 +5,11 @@
             </div>
             <div class="right" id="session-btn">
                </select>
+               {{#if loggedInUser}}
                 <button><a href="/logout">Logout</a></button>
+                {{else}}
+                <button><a href="/login">Login</a></button>
+                {{/if}}
             </div>
         </nav>
         <div class="title">
