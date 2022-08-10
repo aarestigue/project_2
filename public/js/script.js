@@ -1,4 +1,4 @@
-/* const Song = require("../../models/Songs.model"); */
+
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -7,6 +7,9 @@ document.addEventListener(
   },
   false
 );
+
+
+
 
 
 /* let play= false;
