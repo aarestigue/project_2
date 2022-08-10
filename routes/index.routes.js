@@ -3,12 +3,16 @@ const router = require("express").Router();
 const fileUploader = require('../config/cloudinary.config');
 
 const axios = require('axios');
-const {google} = require('googleapis');
+
+
+/* MODELS */
 
 const User = require("../models/User.model");
 const Party = require("../models/Party.model");
 
+/* GOOGLE API */
 
+const {google} = require('googleapis');
 const apiKey = process.env.API_KEY;
 const baseUrl = "https://www.googleapis.com/youtube/v3";
 const youtube = google.youtube({
@@ -16,19 +20,34 @@ const youtube = google.youtube({
   auth : apiKey,
 });
 
+// Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
+const isLoggedOut = require("../middleware/isLoggedOut");
+const isLoggedIn = require("../middleware/isLoggedIn");
+
 
 
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  res.render("index");
+  const user = req.session.user;
+
+  res.render("index", {user});
 });
+
+/* router.get("/:username", (req, res, next) => {
+  const {username} = req.params;
+  console.log(username)
+  res.render("index", username);
+}); */
+
+
 
 // SEARCH
 
 router.get ("/:creator/party/:name", async (req, res, next) => {
 const {search} = req.query;
 const {creator, name} = req.params;
+const user = req.session.user
 
 
 try {
@@ -36,7 +55,7 @@ try {
   /* const url = `${baseUrl}/search?key=${apiKey}&type=video&part=snippet&q=${searchQuery}`; 
 
   const response = await axios.get(url); */
-  let party = await Party.findOne({name: name})
+  let party = await Party.findOne({user, name: name})
   
   
  /*  .then((party)=> {
@@ -85,8 +104,9 @@ try {
 
 router.get ("/:username/profile", (req, res, next) => {
   const username= req.params.username;
+  const user = req.session.user
   
-  res.render('users/profile', {username})
+  res.render('users/profile', {username, user})
 })
 
 //DELETE USER
@@ -94,8 +114,33 @@ router.get ("/:username/profile", (req, res, next) => {
 router.get ("/:username/delete", (req, res, next)=>{
  
   const {username} = req.params
+
+  /* User.findOne({ username })
+    .then((user) => {
+  req.app.locals.loggedOutUser = user; 
+    })
+
+  .then((response) => {req.session.destroy((err) => {
+    if (err) {
+      return res
+        .status(500)
+        .render("auth/logout", { errorMessage: err.message });
+    }
+
+  })
+})
+.then((response) => { */
   User.findOneAndDelete({username : username})
-  .then((response)=> res.redirect("/"))
+  .then(()=> {
+    req.session.destroy((err) => {
+    if (err) {
+      return res
+        .status(500)
+        .render("auth/logout", { errorMessage: err.message });
+    }
+
+  })
+  })
   .catch((err) => next(err))
 })
 
@@ -113,10 +158,19 @@ router.get ("/:username/edit", (req, res, next) => {
   .catch((err) => next(err))
 } )
 
-router.post ("/:username/edit", (req, res, next) => {
+router.post ("/:username/edit", fileUploader.single('imageUrl'), (req, res, next) => {
   
-  const {username, email, password} = req.body;
-  User.findOneAndUpdate({username:username})
+  const {username, email, password, name, last_name, previousUrl} = req.body;
+
+  let imageUrl;
+
+  if (req.file) {
+    imageUrl = req.file.path;
+  } else {
+    imageUrl = previousUrl;
+  }
+
+  User.findOneAndUpdate({username:username, email:email, password:password, name:name, last_name:last_name, imageUrl:imageUrl })
   .then((user)=> res.redirect(`/${username}/profile`))
   
 
@@ -126,9 +180,10 @@ router.post ("/:username/edit", (req, res, next) => {
 
 router.get ("/:username/create-party", (req, res, next) => {
   const username = req.params.username;
+  const user = req.session.user
 
   User.find()
-  .then((allUsers) => {res.render('parties/create-party', {username, allUsers})})
+  .then((allUsers) => {res.render('parties/create-party', {username, allUsers, user})})
   .catch((err) => next(err))
 
 
@@ -138,6 +193,7 @@ router.get ("/:username/create-party", (req, res, next) => {
 router.post ("/:username/create-party", fileUploader.single('imageUrl'), (req, res, next) => {
  
   const {username} = req.params; 
+
   /* res.render('parties/create-party', {username}) */
 
   const {name, creator, contributors} = req.body;
@@ -184,10 +240,10 @@ catch (err) {next(err)};
 
 router.get ("/:party/karaoke", async (req, res, next) => {
   const {party} = req.params
-  
+  const user = req.session.user;
 
   try{
-  const partyPlaylist = await Party.findOne({name: party})
+  const partyPlaylist = await Party.findOne({ name: party})
   
 
   /* await partyPlaylist.songs.forEach((song)=> {
@@ -213,7 +269,7 @@ router.get ("/:party/karaoke", async (req, res, next) => {
 
   
 
-  res.render('parties/party-karaoke', data)
+  res.render('parties/party-karaoke', {user, data})
 
 }
 catch (err) {next(err)}; 
@@ -221,9 +277,10 @@ catch (err) {next(err)};
 
 router.get ("/:username/:name/:songId", (req, res, next) => {
   const {username, name, songId} = req.params
+  const user = req.session.user
   
   Party.findOne({name: name})
-  .then((party) =>res.render('parties/party-karaoke', {username, name, songId, partyPlaylist : party}))
+  .then((party) =>res.render('parties/party-karaoke', {user, username, name, songId, partyPlaylist : party}))
   
   .catch((err) => next(err))
 })

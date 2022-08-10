@@ -1,4 +1,7 @@
 const router = require("express").Router();
+
+const fileUploader = require('../config/cloudinary.config'); 
+
 const axios = require('axios');
 const apiKey = "AIzaSyAHtdN-WUB36KHir7qT7cWLfUXY9tqNyjs";
 const baseUrl = "https://www.googleapis.com/youtube/v3";
@@ -27,8 +30,8 @@ router.get("/signup", isLoggedOut, (req, res) => {
   res.render("auth/signup");
 });
 
-router.post("/signup", isLoggedOut, (req, res) => {
-  const { username, email, password } = req.body;
+router.post("/signup", isLoggedOut,  (req, res) => {
+  const { username, email, password, name, last_name } = req.body;
 
   if (!username) {
     return res.status(400).render("auth/signup", {
@@ -79,6 +82,8 @@ router.post("/signup", isLoggedOut, (req, res) => {
           username,
           email,
           password: hashedPassword,
+          name,
+          last_name,
         });
       })
       .then((user) => {
@@ -155,6 +160,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         }
         req.session.user = user;
         req.app.locals.loggedInUser = user
+        console.log(req.app.locals.loggedInUser)
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
         return res.redirect(`/${username}/profile`);
       });

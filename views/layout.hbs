@@ -13,25 +13,25 @@
 
       <nav class="navbar">
             <div class="left">
-              {{#if loggedInUser}}
-                <a href="/{{username}}"><img src="/images/logo1.jpeg" alt=""></a>
+              {{#if user}}
+                <a href="/{{user.username}}"><img src="/images/logo1.jpeg" alt=""></a>
               {{else}}
                 <a href="/"><img src="/images/logo1.jpeg" alt=""></a>
               {{/if}}
             </div>
             <div class="right" id="session-btn">
                </select>
-               {{#if loggedInUser}}
+               {{#if user}}
 
-               <button><a href="/{{username}}/profile">Profile</a></button>
-                <button><a href="/{{username}}/logout ">Logout</a></button>
+               <button><a href="/{{user.username}}/profile">Profile</a></button>
+                <button><a href="/{{user.username}}/logout">Logout</a></button>
                 
                {{else}}
                 <button><a href="/login">Login</a></button>
               {{/if}}
-              {{#if loggedOutUser}}
+              {{!-- {{#if loggedOutUser}}
                 <button><a href="/login">Login</a></button>
-              {{/if}}
+              {{/if}} --}}
                 
             </div>
         </nav>
