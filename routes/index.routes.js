@@ -92,7 +92,7 @@ router.get ("/:username/profile", (req, res, next) => {
 //DELETE USER
 
 router.get ("/:username/delete", (req, res, next)=>{
-  console.log('delete')
+ 
   const {username} = req.params
   User.findOneAndDelete({username : username})
   .then((response)=> res.redirect("/"))
@@ -101,11 +101,26 @@ router.get ("/:username/delete", (req, res, next)=>{
 
 //EDIT USER
 
-router.post ("/:username/edit", (req, res, next) => {
-  const {username} = req.params
-  res.render('users/profile-edit', username)
+router.get ("/:username/edit", (req, res, next) => {
+  
+  const {username} = req.params;
+  
+  User.findOne({username:username})
+  .then((user)=> {
+    console.log(user)
+    res.render('users/profile-edit', {user})
+  })
+  .catch((err) => next(err))
 } )
 
+router.post ("/:username/edit", (req, res, next) => {
+  
+  const {username, email, password} = req.body;
+  User.findOneAndUpdate({username:username})
+  .then((user)=> res.redirect(`/${username}/profile`))
+  
+
+})
 
 //CREATE PARTY
 
