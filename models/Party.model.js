@@ -5,7 +5,13 @@ const partySchema = new Schema(
   {
     creator: String,
     contributors : [/* {type : Schema.Types.ObjectId, ref: 'User'} */String],
-    songs : [{type : Schema.Types.ObjectId, ref: 'Song'}],
+    songs : {
+        type: Array,
+        items : [{
+            id: String,
+            title: String,
+     }]
+    },
     name : {
         type : String,
         required : [true, 'The name is required'],
@@ -14,7 +20,9 @@ const partySchema = new Schema(
     },
     imageUrl : String,
 
-/*  comments : [{type : Schema.Types.ObjectId, ref: 'Comments'}], */
+ comments : [{type : Schema.Types.ObjectId, ref: 'Comment'}],
+
+ posts : [{type : Schema.Types.ObjectId, ref: 'Post'}]
     },
  {
     // this second object adds extra properties: `createdAt` and `updatedAt`

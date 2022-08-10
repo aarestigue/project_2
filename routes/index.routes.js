@@ -29,23 +29,51 @@ router.get("/", (req, res, next) => {
 router.get ("/:creator/party/:name", async (req, res, next) => {
 const {search} = req.query;
 const {creator, name} = req.params;
+
+
 try {
   /* const searchQuery = req.query.search_query */
   /* const url = `${baseUrl}/search?key=${apiKey}&type=video&part=snippet&q=${searchQuery}`; 
 
   const response = await axios.get(url); */
+  let party = await Party.findOne({name: name})
+  
+  
+ /*  .then((party)=> {
+      party.songs.forEach((song) => {
+      const displaySong = youtube.search.list({
+      part: "snippet",
+      q: song,
+      type : "video",
+      });
+    
+    const playlistSong = displaySong.data.items[0].snippet.title; 
+    console.log(displaySong);
+    })
+  }) */
+  
+
   const response = await youtube.search.list({
     part: "snippet",
-    q: search,
+    q: `karaoke ${search}`,
     type : "video",
-
+    maxResults : 10,
+    videoEmbeddable : true,
     });
 
-    const songQuery = await response.data.items.map((item)=> item);
-   
+    const songQuery = response.data.items.map((item)=> item);
+
+   const data = {
+      songQuery,
+      party,
+      
+    }
+
+
+
   /* await response */
-  res.render('parties/party-detail', {songQuery, creator, name}) 
-  console.log(response.data.items)
+  res.render('parties/party-detail', { data}) 
+ 
   
 }
   
@@ -93,41 +121,77 @@ router.post ("/:username/create-party", fileUploader.single('imageUrl'), (req, r
 
 //UPDATE PARTY
 
-router.post ("/add-song/:id", async (req, res, next) => {
 
+router.post ("/add-song/:id/:partyId/:songTitle", async (req, res, next) => {
+const {id, partyId, songTitle} = req.params;
 
-const {id} = req.query;
-const {creator, name} = req.params;
-try {
-  /* const searchQuery = req.query.search_query */
-  /* const url = `${baseUrl}/search?key=${apiKey}&type=video&part=snippet&q=${searchQuery}`; 
-
-  const response = await axios.get(url); */
-  const response = await youtube.search.list({
-    part: "snippet",
-    type : "video",
-
-    });
-
-    const song = await response.data.items.map((item)=> item.id.videoId);
-   
-  /* await response */
-  res.render('parties/party-detail', {id, song, creator, name}) 
-  console.log(song)
-  
+const addSong = {
+  id: id,
+  title:songTitle,
 }
-  
-  catch (err) {next(err)}; 
-  
-  
 
 
+try {
+  const party = await Party.findByIdAndUpdate(partyId, {$push: {songs: addSong}})
+
+
+  res.redirect(`/${party.creator}/party/${party.name}`)
+
+  }
+     
+  
+catch (err) {next(err)}; 
+
+
+
+  
 })
 
 // KARAOKE
 
-router.get ("/party/karaoke", async (req, res, next) => {
-  res.render('karaoke')
+router.get ("/:party/karaoke", async (req, res, next) => {
+  const {party} = req.params
+  
+
+  try{
+  const partyPlaylist = await Party.findOne({name: party})
+  
+
+  /* await partyPlaylist.songs.forEach((song)=> {
+   
+        const response = youtube.search.list({
+          part: "snippet",
+          q: song,
+          type : "video",
+          maxResults : 10,
+          });
+
+          console.log(response)
+      
+    
+  }); */
+ 
+ 
+
+  const data = {
+    partyPlaylist,
+    party
+  }
+
+  
+
+  res.render('parties/party-karaoke', data)
+
+}
+catch (err) {next(err)}; 
 })
 
+router.get ("/:username/:name/:songId", (req, res, next) => {
+  const {username, name, songId} = req.params
+  
+  Party.findOne({name: name})
+  .then((party) =>res.render('parties/party-karaoke', {username, name, songId, partyPlaylist : party}))
+  
+  .catch((err) => next(err))
+})
 module.exports = router;

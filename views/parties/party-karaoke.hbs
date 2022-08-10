@@ -1,0 +1,17 @@
+<h1>Party playlist</h1>
+
+<div id="karaoke">
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/{{songId}}?autoplay=1&loop=1" autoplay="0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+
+<nav>
+{{#each partyPlaylist.songs}}
+<li class="song" value="{{this.id}}">{{this.title}}</li>
+
+<a method="GET" value="{{this.id}}" href="/{{../partyPlaylist.creator}}/{{../partyPlaylist.name}}/{{this.id}}" id="{{this.id}}" class="play" onclick="playSong('{{this.id}}')"><img src="/images/play (1).png" alt="" width="25"/></a>
+
+{{/each}}
+</nav>
+
