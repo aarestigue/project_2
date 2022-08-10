@@ -169,35 +169,49 @@ body{
 /* css finish  index page */
 
 
-/* <div class="container">
-    <form action="/login" method="POST">
-   <label> Username
-      <input type="text" name="username" value="{{username}}">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
 
-   <button type="submit">Submit</button> 
-</form>
- 
-</div>
- */
 
- .container {
-  width: 100px;
-  height: 100px;
-  padding: 50px;
- align-items: center;
+.Logincontainer {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  height: 100vh;
   justify-content: center;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%) 
+}
+
+.form-button {
+  background-color: #ca4722; 
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+
+.form-field {
+  
+  width: 35vw;
+  height: 5vh;
+  margin: 10px;
+  padding: 10px;
+background-color: #9e9e9e;
+border-radius: 2px;
+border: none;
+ color: rgb(220, 30, 30); 
+ display: flex;
+ 
+
+}
+
+ 
+
+ 
+
     
- }
+
 
 
  
