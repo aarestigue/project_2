@@ -106,6 +106,14 @@ router.post("/signup", isLoggedOut, (req, res) => {
   });
 });
 
+//LOGIN
+
+router.get ("/login-username", isLoggedOut, (req,res)=> {
+  const username = req.query;
+  console.log(username)
+  res.render("auth/login", username);
+})
+
 router.get("/login", isLoggedOut, (req, res) => {
   res.render("auth/login");
 });
