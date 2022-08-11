@@ -45,7 +45,7 @@ router.get("/", (req, res, next) => {
 
 // SEARCH - PARTY DETAIL
 
-router.get ("/:creator/party/:name", async (req, res, next) => {
+router.get ("/:creator/party/:name", isLoggedIn, async (req, res, next) => {
 const {search} = req.query;
 const {creator, name} = req.params;
 const user = req.session.user

@@ -1,16 +1,25 @@
+#profile-body {
+width: 100vw;
+height: 100vh;
+background-color: rgb(21, 21, 21, 0.9);
+}
+
 .profile-menu {
     display: flex;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .profile-container {
-   width: 70vw;
+   width: 50vw;
    height: 30vh;
-   border-style: none;
+  
    border: 10px;
    border-color: white;
+   border-width: 2px;
    padding: 10px;
-   background-color: grey;
-   border-radius: 15px;
+   background-color: rgb(9, 7, 7, 1);
+   border-radius: 5px;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 }
 
