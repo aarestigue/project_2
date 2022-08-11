@@ -1,3 +1,5 @@
+/* PROFILE PAGE */
+
 #profile-body {
 width: 100vw;
 /* height: 100vh; */
@@ -87,3 +89,15 @@ align-items: flex-start;
     flex-direction: column;
 }
 
+/* CREATE PARTY */
+
+#party-body {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(57, 56, 56, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+    
+    }
