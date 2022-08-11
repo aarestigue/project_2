@@ -8,29 +8,25 @@
 
    <button type="submit">Submit</button> 
 </form> --}}
-<section class="section">
-
-<div class="Logincontainer"> 
-    <form action="/login" method="POST">
-<h1 title="Login Session" class="form-title">Sign In</h1>
- <div class="form-field"> 
-   <label> {{!-- Username --}}
-      <input type="text" name="username" value="{{username}}"  placeholder="USERNAME" class="form-field" >
-   </label>
-</div>
-
-    <div class="form-field"> 
-   <label> {{!-- Password --}}
-      <input type="password" name="password" placeholder="PASSWORD" class="form-field">
-   </label> 
- </div> 
- <button type="submit" class="form-button">Sign In</button> 
 
 
+<section>
+<form action="/login" method="POST">
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" name="username" value="{{username}}"placeholder="Enter Username" >
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" name="psw"placeholder="Enter Password">
+
+    <button type="submit">Login</button>
+    
+  </div>
 </form>
-
-</div>
 </section>
+
+
 {{#if errorMessage}}
    {{errorMessage}}
 {{/if}}
