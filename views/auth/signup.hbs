@@ -30,47 +30,61 @@
  --}}
 
 
+<div class="signup-body">
+<section class="signup-container">
 
-<section class="singup-container">
 
-<form action="/singup" method="POST">
+<form class="signup-form" action="/signup" method="POST">
 
 <div class="container">
 
-   <div class="username">
-    <label for="username"><b>Username</b>
-    <input type="text" name="username" id="username">
+    
+  
+
+
+<div class="form-field">
+
+     <label for="username"><b>Username</b>
+    <input class="form-field"  type="text" name="username" placeholder="Enter Username" id="username">
 </label>
 
 <label for="email"><b>Email</b>
-    <input type="email" name="email"placeholder="Enter Email" id="email">
+    <input class="form-field" type="email" name="email"placeholder="Enter Email" id="email">
     </label>
 
 
+
     <label for="password"><b>Password</b>
-    <input type="password" name="password"placeholder="Enter Password" id="password">
+    <input  class="form-field" type="password" name="password"placeholder="Enter Password" id="password">
     </label>
 
 
     <label for="name"><b>Name (optional)</b>
-    <input type="text" name="name"  placeholder="First_Name" id="name">
+    <input class="form-field" type="form-field" name="name"  placeholder="First_Name" id="name">
     </label>
+
 
     <label for="Last Name"><b>Last Name (optional)</b>
-    <input type="text" name="last_name" placeholder="Last_Name" id="last_name">
+    <input class="form-field" type="form-field" name="last_name" placeholder="Last_Name" id="last_name">
     </label>
+
+
+<div class="signup-container-button">
+   <div >
+<button class="button-signup" type="submit">Signup!</button>
+</div>
+
+
+</div>
+</form>
 <div>
-   <div class="button-login">
-<button type="submit">Sign up!</button>
-</div>
-</div>
-</div>
-  {{#if errorMessage}}
+ {{#if errorMessage}}
    {{errorMessage}}
 {{/if}}
-</form>
+</div>
 </section>
 
+</div>
 
 
 
