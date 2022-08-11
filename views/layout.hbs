@@ -17,33 +17,33 @@
 
   <body>
 
-      <nav class="navbar">
-            <div class="left">
-              {{#if user}}
-                <a href="/{{user.username}}/profile"><img src="/images/ultima.png" alt=""></a>
-              {{else}}
-                <a href="/"><img src="/images/ultima.png" alt=""></a>
-              {{/if}}
-            </div>
-            <div class="right" id="session-btn">
-               </select>
-               {{#if user}}
-                {{!-- <button type="button" class="btn btn-primary btn-lg"><a href="/{{user.username}}/profile">Profile</a>Large button</button> --}}
-               <button class="profile-button"><a href="/{{user.username}}/profile">Profile</a></button>
-                <button><a href="/{{user.username}}/logout">Logout</a></button>
-                
-               {{else}}
-                <button><a href="/login">Login</a></button>
-                
-              {{/if}}
-              {{!-- {{#if loggedOutUser}}
-                <button><a href="/login">Login</a></button>
-              {{/if}} --}}
-                
+<nav class="navbar">
+    <div class="left">
+      {{#if user}}
+        <a href="/{{user.username}}/profile"><img src="/images/finallogo.png" alt=""></a>
+      {{else}}
+        <a href="/"><img src="/images/finallogo.png" alt=""></a>
+      {{/if}}
+    </div>
+    <div class="right" id="session-btn">
+       </select>
+       {{#if user}}
+        {{!-- <button type="button" class="btn btn-primary btn-lg"><a href="/{{user.username}}/profile">Profile</a>Large button</button> --}}
+       <button class="profile-button"><a href="/{{user.username}}/profile">Profile</a></button>
+        <button><a href="/{{user.username}}/logout">Logout</a></button>
+        
+       {{else}}
+        <button><a href="/login">Login</a></button>
+        
+      {{/if}}
+      {{!-- {{#if loggedOutUser}}
+        <button><a href="/login">Login</a></button>
+      {{/if}} --}}
+        
 </div>
 
-            </div>
-        </nav>
+    </div>
+</nav>
 
     {{{body}}}
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

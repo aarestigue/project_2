@@ -16,7 +16,7 @@ body{
 }
 
 /* .container */ .navbar{
-  height: 86px;
+  height: 90px;
   display: flex;
   background-color: rgba(1, 0, 0, 0.7);
   
@@ -48,8 +48,8 @@ body{
   padding: 13px 40px;
   background-color: transparent;
   cursor: pointer;
-outline-style: auto;
-outline-color: rgb(255, 255, 255);
+/* outline-style: auto; */
+/* outline-color: rgb(255, 255, 255); */
   border-radius: 8px;
   border: 0;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -70,8 +70,8 @@ outline-color: rgb(255, 255, 255);
   padding: 13px 40px;
   background-color: transparent;
   cursor: pointer;
-outline-style: auto;
-outline-color: rgb(255, 255, 255);
+/* outline-style: auto;
+outline-color: rgb(255, 255, 255); */
   border-radius: 8px;
   border: 0;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -295,7 +295,7 @@ button:hover {
   transform: translate(-50%, -50%);
   background-color: black;
   width: 30vw;
-  height: 45vh;
+  height: 54vh;
  /*  position: absolute;
   left: 700px;
   top: 400px; */
@@ -311,8 +311,6 @@ button:hover {
   
 
 
-
-  
   .form-field {
     width: 20vw;
     height: 4vh;
@@ -328,10 +326,14 @@ button:hover {
   /* Add padding to containers */
 .button-signup {
   
-width: 20vw;
-height: 4vh;
+width: 20.2vw;
+height: auto;
 padding-top: 10px;
 background-color: #032e7f;
+font-size: larger;
+
+
+
 /* display: flex;
     flex-direction: column;
     justify-content: center; */
@@ -341,14 +343,14 @@ background-color: #032e7f;
 
 
  .signup-container-button{
-  width: 20vw;
-  height: 4vh;
+  /* width: 20vw; */
+ /*  height: 20vh; */
    margin-top: 10px;
    border: none;
     cursor: pointer;
-     width: 100%;
+    /*  width: 100%; */
      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    
+  font-style: italic;
      
     }
   
