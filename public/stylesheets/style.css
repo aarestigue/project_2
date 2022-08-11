@@ -279,7 +279,58 @@ button:hover {
 
 /* signup here */
 
+.singup-container  {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  width: 350px;
+  height: 345px;
+ /*  position: absolute;
+  left: 700px;
+  top: 400px; */
+  
+}
 
+/* Full-width inputs */
+.container .username-password-login input[type=text], input[type=password]  {
+ 
+  width: 100%;
+  padding: 15px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-top: 15px;
+}
+
+/* Set a style for all buttons */
+.login-container button{
+  background-color: #032e7f;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
+  padding: 14px 20px;
+ margin-top: 35px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-size: larger;
+
+
+  
+ 
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+/* Add padding to containers */
+.login-container {
+  padding: 16px;
+}
 
 
 
