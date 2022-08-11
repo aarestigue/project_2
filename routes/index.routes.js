@@ -43,7 +43,7 @@ router.get("/", (req, res, next) => {
 
 
 
-// SEARCH
+// SEARCH - PARTY DETAIL
 
 router.get ("/:creator/party/:name", async (req, res, next) => {
 const {search} = req.query;
@@ -56,24 +56,21 @@ try {
   /* const url = `${baseUrl}/search?key=${apiKey}&type=video&part=snippet&q=${searchQuery}`; 
 
   const response = await axios.get(url); */
+
+ 
   let party = await Party.findOne({user, name: name})
   
-  
- /*  .then((party)=> {
-      party.songs.forEach((song) => {
-      const displaySong = youtube.search.list({
-      part: "snippet",
-      q: song,
-      type : "video",
-      });
-    
-    const playlistSong = displaySong.data.items[0].snippet.title; 
-    console.log(displaySong);
-    })
-  }) */
-  
-
-  const response = await youtube.search.list({
+  if (!search) {
+    const data = {
+      
+      party,
+      search,
+      
+      
+    }
+    res.render('parties/party-detail', {data}) 
+  }
+const response = await youtube.search.list({
     part: "snippet",
     q: `karaoke ${search}`,
     type : "video",
@@ -86,13 +83,15 @@ try {
    const data = {
       songQuery,
       party,
+      search,
+      
       
     }
 
 
 
   /* await response */
-  res.render('parties/party-detail', { data}) 
+  res.render('parties/party-detail', { data, user}) 
  
   
 }
@@ -107,7 +106,7 @@ router.get ("/:username/profile", (req, res, next) => {
   const username= req.params.username;
   const user = req.session.user
   const {userId} = user._id
-  console.log(userId)
+  
  User.findOne(userId)
  .populate({
   path: 'parties',
@@ -147,9 +146,9 @@ router.get ("/:username/delete", (req, res, next)=>{
         .status(500)
         .render("auth/logout", { errorMessage: err.message });
     }
-
   })
-  })
+})
+.then(()=> res.redirect('/'))
   .catch((err) => next(err))
 })
 
@@ -221,7 +220,7 @@ router.post ("/:username/create-party", fileUploader.single('imageUrl'), (req, r
   
 })
 
-//UPDATE PARTY
+//UPDATE PARTY - ADD SONGS
 
 
 router.post ("/add-song/:id/:partyId/:songTitle", async (req, res, next) => {
@@ -244,9 +243,23 @@ try {
   
 catch (err) {next(err)}; 
 
+})
+
+//UPDATE PARTY - CHANGE NAME & ADD CONTRIBUTORS
 
 
-  
+
+//DELETE PARTY
+
+router.get ("/:name/delete/party", (req, res, next)=>{
+  const user = req.session.user;
+  const username = user.username;
+  const {name} = req.params
+  console.log(name)
+
+  Party.findOneAndDelete({name : name})
+  .then(()=> res.redirect(`/${username}/profile`))
+  .catch((err) => next(err))
 })
 
 // KARAOKE

@@ -1,20 +1,17 @@
-
-
-<h1>Create a Party</h1>
+<h1>Edit your Party</h1>
 
 <div>
-<form  method="post" action="/{{username}}/create-party" enctype="multipart/form-data">
+<form  method="post" action="/{{username}}/edit-party" enctype="multipart/form-data">
 
 <label for="name">Party name</label>
 <input type="text" name="name" id="name" />
 
 <label for="creator">Creator</label>
-<input type="text" name="creator" id="creator" value="{{username}}" />
+<input type="text" name="creator" id="creator" value="{{username}}" hidden/>
 
 <label for="contributors">Contributors</label>
 
-
-<select  name="contributors[]" id="contributors"  size="2"  class="js-example-basic-multiple" multiple="multiple">
+<select name="contributors" name="contributors" id="contributors"  size="2" multiple>
     {{#each allUsers}}
     <option value="{{this._id}}" >{{this.username}}</option>
     {{/each}}
@@ -24,13 +21,11 @@
 <div>
 <label for='imageUrl'>Party Image</label>
 <input type='file' name='imageUrl' id='imageUrl' class='form-control-file' />
+ <input type='text' name='previousUrl' value='{{user.imageUrl}}' hidden />
+<img src="{{user.imageUrl}}" alt="">
 </div>
 
  <button type='submit' class='btn btn-primary'>Create Party!</button>
 
 </form>
 </div>
-
-<script>$(document).ready(function() {
-    $('.js-example-basic-multiple').select2();
-});</script>

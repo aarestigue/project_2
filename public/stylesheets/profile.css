@@ -19,3 +19,10 @@
     padding: 10px;
 }
 
+/* PLAYLIST SEARCH */
+
+.playlist-container {
+    margin: 15px;
+    display: flex;
+}
+
