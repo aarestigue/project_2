@@ -2,28 +2,62 @@
 
 {{!-- PROFILE MENU --}}    
 
+
 <div class="profile-menu">
+
+<nav  class="navbar navbar-expand-lg navbar-light bg-dark">
+    
+    <nav class="navbar navbar-dark bg-dark">
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+   </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+     <ul class="navbar-nav">
+        <li class="nav-item active">
+        <a href="/{{username}}/edit" class="nav-link" >Edit profile <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/{{username}}/delete " method="get" action="/{{username}}/delete">Delete profile</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/{{username}}/logout" >Log out</a>
+        </li>
+
+     </ul>
+    </div>
+    
+
+
+    </nav>  
+    
+
+</nav>
+
+<div class="profile-title">
+
+{{#if response.imageUrl}}
+<img class="profile-img" src="{{response.imageUrl}}" alt="" width="50"/>
+
+{{else}}
+<img class="profile-img" src="/images/party_default.jpeg" alt="" width="50"/>
+{{/if}}
+
 {{#if response.name}}
 <h1>Hello {{response.name}}!</h1>
 {{else}}
 <h1>Hello {{response.username}}!</h1>
 {{/if}}
 
-{{#if response.imageUrl}}
-<img src="{{response.imageUrl}}" alt="" width="50"/>
-
-{{else}}
-<img src="/images/party_default.jpeg" alt="" width="50"/>
-{{/if}}
 </div>
 
-<div>
-    
-    <a href="/{{username}}/edit " >Edit profile</a>
-    <a href="/{{username}}/delete " method="get" action="/{{username}}/delete">Delete profile</a>
-    <a href="/{{username}}/logout " >Log out</a>
+
+
 
 </div>
+
+{{!-- PARTIES SECTION HERE --}}
 
 <section id="user-parties" class="profile-container">
 
@@ -50,6 +84,7 @@
 </section>
 
 </div>
+
 
 
    
