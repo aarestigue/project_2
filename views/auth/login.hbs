@@ -1,27 +1,17 @@
-{{!-- <form action="/login" method="POST">
-   <label> Username
-      <input type="text" name="username" value="{{username}}">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
-
-   <button type="submit">Submit</button> 
-</form> --}}
-
-
-<section>
+<section class="login-container">
 <form action="/login" method="POST">
 
   <div class="container">
-    <label for="username"><b>Username</b></label>
-    <input type="text" name="username" value="{{username}}" placeholder="Enter Username" >
+   <div class="username-password-login">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" name="username" value="{{username}}"placeholder="Enter Username" >
 
     <label for="password"><b>Password</b></label>
     <input type="password" name="password"placeholder="Enter Password">
-
+</div>
+<div class="button-login">
     <button type="submit">Login</button>
-    
+    </div>
   </div>
 </form>
 </section>

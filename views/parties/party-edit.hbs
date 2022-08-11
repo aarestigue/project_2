@@ -4,14 +4,16 @@
 <form  method="post" action="/{{username}}/edit-party" enctype="multipart/form-data">
 
 <label for="name">Party name</label>
-<input type="text" name="name" id="name" />
+<input type="text" name="name" id="name" value="" />
 
 <label for="creator">Creator</label>
 <input type="text" name="creator" id="creator" value="{{username}}" hidden/>
 
-<label for="contributors">Contributors</label>
 
-<select name="contributors" name="contributors" id="contributors"  size="2" multiple>
+
+<label for="contributors">Add new contributors</label>
+
+<select  name="contributors[]" id="contributors"  size="2"  class="js-example-basic-multiple" multiple="multiple">
     {{#each allUsers}}
     <option value="{{this._id}}" >{{this.username}}</option>
     {{/each}}
@@ -21,7 +23,7 @@
 <div>
 <label for='imageUrl'>Party Image</label>
 <input type='file' name='imageUrl' id='imageUrl' class='form-control-file' />
- <input type='text' name='previousUrl' value='{{user.imageUrl}}' hidden />
+ <input type='text' name='previousUrl' value='{{party.imageUrl}}' hidden />
 <img src="{{user.imageUrl}}" alt="">
 </div>
 

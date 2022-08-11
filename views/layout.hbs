@@ -10,7 +10,8 @@
    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/profile.css" />
-  </head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"/>
+    </head>
 
   <body>
 
@@ -25,12 +26,13 @@
             <div class="right" id="session-btn">
                </select>
                {{#if user}}
-
+                {{!-- <button type="button" class="btn btn-primary btn-lg"><a href="/{{user.username}}/profile">Profile</a>Large button</button> --}}
                <button><a href="/{{user.username}}/profile">Profile</a></button>
                 <button><a href="/{{user.username}}/logout">Logout</a></button>
                 
                {{else}}
                 <button><a href="/login">Login</a></button>
+                
               {{/if}}
               {{!-- {{#if loggedOutUser}}
                 <button><a href="/login">Login</a></button>

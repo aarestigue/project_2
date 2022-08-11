@@ -68,7 +68,7 @@ try {
       
       
     }
-    res.render('parties/party-detail', {data}) 
+    res.render('parties/party-detail', {data, user}) 
   }
 const response = await youtube.search.list({
     part: "snippet",
@@ -247,7 +247,11 @@ catch (err) {next(err)};
 
 //UPDATE PARTY - CHANGE NAME & ADD CONTRIBUTORS
 
-
+router.get ("/:name/edit/party", (req, res, next) => {
+  const {name} = req.params;
+  const user = req.session.user;
+  res.render('parties/party-edit', {name, user})
+})
 
 //DELETE PARTY
 

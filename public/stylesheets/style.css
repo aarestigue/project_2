@@ -32,7 +32,7 @@ body{
 
 
 /* .container */ .navbar .right button{
-  margin: auto;
+  margin: 6px;
   align-items: center;
   justify-content: center;
   font-size: 25px;
@@ -41,7 +41,7 @@ body{
   background: #e50914;
   cursor: pointer;
   outline: none;
-  border-radius: 50px;
+  border-radius: 8px;
   border-color: aliceblue;
 }
 /* .container */ .navbar .right button a{
@@ -70,8 +70,9 @@ body{
 .container .title .content h1{
   width: 650px;
   margin: auto;
-  font-size: 3.1rem;
+  font-size: 4.1rem;
   text-align: center;
+  
 }
 .container .title .content h2{
   width: 650px;
@@ -175,19 +176,18 @@ body{
 /* css for login page  */
 
 /* Bordered form */
-section form {
+.login-container  {
   border: 3px solid #f1f1f1;
   background-color: rgba(87, 81, 87);
   position: absolute;
   left: 600px;
   top: 400px;
   
- 
-  
 }
 
 /* Full-width inputs */
-input[type=text], input[type=password] {
+.container .username-password-login input[type=text], input[type=password]  {
+ 
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -197,7 +197,7 @@ input[type=text], input[type=password] {
 }
 
 /* Set a style for all buttons */
-button {
+.login-container button{
   background-color: #f60c0c;
   color: white;
   padding: 14px 20px;
@@ -213,7 +213,7 @@ button:hover {
 }
 
 /* Add padding to containers */
-.container {
+.login-container {
   padding: 16px;
 }
 
@@ -221,6 +221,8 @@ button:hover {
 
 
 /* end css login here */
+
+
 
 
 

@@ -2,7 +2,7 @@
 <H1>{{data.party.name}}</H1>
 <a href="/{{user.username}}/profile">Go back</a>
 <a href="/{{data.party.name}}/delete/party" >Delete party</a>
-<a href="">Add contributors</a>
+<a href="/{{data.party.name}}/edit/party">Add contributors</a>
 </div>
 
 <div class="playlist-container">
@@ -11,6 +11,7 @@
 
 <form action="/{{data.party.creator}}/party/{{data.party.name}}" method="get">
 <label for="search">Find your song</label>
+
 <input type="text" name="search" id="search" value="" >
 {{!-- <input type="text" name="partyId" value="{{party._id}}" hidden> --}}
 
