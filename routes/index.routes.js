@@ -111,14 +111,14 @@ router.get ("/:username/profile", (req, res, next) => {
   const user = req.session.user
   const {userId} = user._id
   
- User.findOne(userId)
+ User.findOne({username:username})
  .populate({
   path: 'parties',
   model: 'Party',
   })
   .then((response)=> res.render('users/profile', {username, user, response}))
 
-  
+  console.log(userId)
 }) 
 
 //DELETE USER

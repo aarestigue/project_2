@@ -16,7 +16,10 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
      <ul class="navbar-nav">
         <li class="nav-item active">
-        <a href="/{{username}}/edit" class="nav-link" >Edit profile <span class="sr-only">(current)</span></a>
+        <a href="/{{username}}/profile" class="nav-link" >My profile <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+        <a href="/{{username}}/edit" class="nav-link" >Edit profile</a>
         </li>
         <li class="nav-item">
         <a class="nav-link" href="/{{username}}/delete " method="get" action="/{{username}}/delete">Delete profile</a>
@@ -63,23 +66,42 @@
 
 <div class="profile-parties-menu">
 
-<h3>Your Parties</h3>
+<h3>Choose your party</h3>
 
-
-<img src="/images/add.png" alt="" width="20"/>
-<a href="/{{username}}/create-party " >New party</a>
+<div style="display: flex; margin:1vw;" >
+<a href="/{{username}}/create-party " ><img src="/images/plus.png" alt="" width="20"/></a>
+<p style="margin-left: 1vw;">New party</p>
+</div>
 
 </div>
 
-<div class="party-card">
-    {{#unless response.parties}}
-    <p>No parties yet!</p>
-    {{/unless}}
-    {{#each response.parties}}
-    <a href="/{{../response.username}}/party/{{this.name}}"><img src="{{this.imageUrl}}" alt="" width="50"/></a>
-    <a href="/{{../response.username}}/party/{{this.name}}"><h6>{{this.name}}</h6></a>
-    {{/each}}
-</div>
+{{!-- <div class="row row-cols-1 row-cols-md-2 g-4">
+<div class="col"> --}}
+
+    
+       
+
+    <div class="profile-parties-card">
+
+         {{#unless response.parties}}
+        <p>No parties yet!</p>
+        {{/unless}}
+
+        {{#each response.parties}}
+    
+        <div class="card border-light text-white bg-transparent mb-4" style="max-width: 15rem;">
+                <a  href="/{{../response.username}}/party/{{this.name}}"><img class="card-img-top" src="{{this.imageUrl}}" alt="" width="50"/></a>
+            <div class="card-body">
+                <a  href="/{{../response.username}}/party/{{this.name}}"><h4 class="card-title">{{this.name}}</h6></a>
+                <p class="card-text">Created by {{this.creator}}</p>
+            </div>
+        </div>
+
+        {{/each}}
+    </div>
+
+{{!-- </div>
+</div> --}}
 
 </section>
 
