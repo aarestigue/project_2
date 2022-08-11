@@ -32,29 +32,15 @@ app.use("/", authRoutes);
 
 // AUTH ROUTES
 
-const signUp = require("./routes/auth.routes");
-app.use("/signup", signUp);
+/* const signUp = require("./routes/auth.routes");
+app.use("/", signUp);
 
-
+const login = require("./routes/auth.routes");
+app.use("/", login); */
 
 
 // INDEX ROUTES
 
-
-
-const search = require("./routes/index.routes");
-app.use("/search", search);
-
-const userProfile = require("./routes/index.routes");
-app.use("/users/profile", userProfile);
-
-const createParty = require("./routes/index.routes");
-app.use("/party/create", createParty);
-
-
-
-const karaoke = require("./routes/index.routes");
-app.use("/party/karaoke", karaoke);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

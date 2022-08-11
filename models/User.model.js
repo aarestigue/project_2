@@ -28,25 +28,25 @@ const userSchema = new Schema(
     name : {
       type: String,
       trim: true,
-      required: [true, 'name is required'],
+      
       
     },
 
     last_name : {
       type: String,
       trim: true,
-      required: [true, 'last name is required'],
+      
     },
 
     imageUrl : {
       type: String,
     },
 
-     parties: [{type : Schema.Types.ObjectId, ref: 'Users'}],
-     following : [{type : Schema.Types.ObjectId, ref: 'Users'}],
-     followers : [{type : Schema.Types.ObjectId, ref: 'Users'}],
-     posts : [{type : Schema.Types.ObjectId, ref: 'Posts'}],
-     comments : [{type : Schema.Types.ObjectId, ref: 'Comments'}],
+     parties: [{type : Schema.Types.ObjectId, ref: 'Party'}],
+     following : [{type : Schema.Types.ObjectId, ref: 'User'}],
+     followers : [{type : Schema.Types.ObjectId, ref: 'User'}],
+     posts : [{type : Schema.Types.ObjectId, ref: 'Post'}],
+     comments : [{type : Schema.Types.ObjectId, ref: 'Comment'}],
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

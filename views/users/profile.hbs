@@ -1,7 +1,16 @@
 <div class="profile-menu">
-<h1>Hello {{response.name}}</h1>
+{{#if response.name}}
+<h1>Hello {{response.name}}!</h1>
+{{else}}
+<h1>Hello {{response.username}}!</h1>
+{{/if}}
+
+{{#if response.imageUrl}}
 <img src="{{response.imageUrl}}" alt="" width="50"/>
 
+{{else}}
+<img src="/images/party_default.jpeg" alt="" width="50"/>
+{{/if}}
 </div>
 
 <div>
@@ -17,14 +26,21 @@
 <div class="profile-parties-menu">
 
 <h3>Your Parties</h3>
+
+
 <img src="/images/add.png" alt="" width="20"/>
 <a href="/{{username}}/create-party " >New party</a>
 
 </div>
 
 <div class="party-card">
-    <a href=""><img src="/images/party_default.jpeg" alt="" width="50"/></a>
-    <a href=""><h6>Party name </h6></a>
+    {{#unless response.parties}}
+    <p>No parties yet!</p>
+    {{/unless}}
+    {{#each response.parties}}
+    <a href="/{{../response.username}}/party/{{this.name}}"><img src="{{this.imageUrl}}" alt="" width="50"/></a>
+    <a href="/{{../response.username}}/party/{{this.name}}"><h6>{{this.name}}</h6></a>
+    {{/each}}
 </div>
 
 </section>

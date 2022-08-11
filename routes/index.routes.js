@@ -109,6 +109,10 @@ router.get ("/:username/profile", (req, res, next) => {
   const {userId} = user._id
   console.log(userId)
  User.findOne(userId)
+ .populate({
+  path: 'parties',
+  model: 'Party',
+  })
   .then((response)=> res.render('users/profile', {username, user, response}))
 
   
@@ -187,6 +191,8 @@ router.get ("/:username/create-party", (req, res, next) => {
   const username = req.params.username;
   const user = req.session.user
 
+  
+
   User.find()
   .then((allUsers) => {res.render('parties/create-party', {username, allUsers, user})})
   .catch((err) => next(err))
@@ -197,16 +203,18 @@ router.get ("/:username/create-party", (req, res, next) => {
 
 router.post ("/:username/create-party", fileUploader.single('imageUrl'), (req, res, next) => {
  
-  const {username} = req.params; 
-
+  const username = req.params.username; 
+  console.log(username)
   /* res.render('parties/create-party', {username}) */
 
   const {name, creator, contributors} = req.body;
   const imageUrl = req.file.path;
-  
+ 
 
   Party.create({name, creator, contributors, imageUrl})
-  .then((user) => {res.redirect(`/${creator}/party/${name}`)})
+
+  .then((party)=> User.findOneAndUpdate({username:username}, { $push: { parties: party._id } }))
+  .then((response)=> {res.redirect(`/${username}/party/${name}`)})
   .catch((err) => next(err))
 
 
