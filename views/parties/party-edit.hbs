@@ -1,23 +1,30 @@
 <h1>Edit your Party</h1>
 
 <div>
-<form  method="post" action="/{{username}}/edit-party" enctype="multipart/form-data">
+<form  method="post" action="/{{party.name}}/edit-party" enctype="multipart/form-data">
 
 <label for="name">Party name</label>
-<input type="text" name="name" id="name" value="" />
+<input type="text" name="name" id="name" value="{{party.name}}" />
 
-<label for="creator">Creator</label>
+{{!-- <label for="creator">Creator</label> --}}
 <input type="text" name="creator" id="creator" value="{{username}}" hidden/>
 
 
 
 <label for="contributors">Add new contributors</label>
 
-<select  name="contributors[]" id="contributors"  size="2"  class="js-example-basic-multiple" multiple="multiple">
+{{!-- {{#each party.contributors}} --}}
+<select  name="contributors[]" id="contributors"  size="2"  class="js-example-basic-multiple" multiple="multiple" value="{{this.username}}">
+
     {{#each allUsers}}
+    {{#if this.isContributor}}
+    <option value="{{this._id}}" selected>{{this.username}}</option>
+    {{else}}
     <option value="{{this._id}}" >{{this.username}}</option>
+    {{/if}}
     {{/each}}
 </select>
+{{!-- {{/each}} --}}
 
 
 <div>
@@ -27,7 +34,13 @@
 <img src="{{user.imageUrl}}" alt="">
 </div>
 
- <button type='submit' class='btn btn-primary'>Create Party!</button>
+ <button type='submit' class='btn btn-primary'>Edit Party</button>
+ <a href="/{{username}}/party/{{party.name}}"><button type='submit' class='btn btn-primary'>Cancel</button></a>
+
 
 </form>
 </div>
+
+<script>$(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});</script>

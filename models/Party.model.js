@@ -4,7 +4,7 @@ const { Schema, model } = require("mongoose");
 const partySchema = new Schema(
   {
     creator: String,
-    contributors : [/* {type : Schema.Types.ObjectId, ref: 'User'} */String],
+    contributors : [{type : Schema.Types.ObjectId, ref: 'User'}],
     songs : {
         type: Array,
         items : [{

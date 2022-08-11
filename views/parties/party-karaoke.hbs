@@ -1,4 +1,5 @@
 <h1>Party playlist</h1>
+<a href="/{{username}}/party/{{data.partyPlaylist.name}}">Edit Party</a>
 
 <div id="karaoke">
 
@@ -7,10 +8,10 @@
 
 
 <nav>
-{{#each partyPlaylist.songs}}
+{{#each data.partyPlaylist.songs}}
 <li class="song" value="{{this.id}}">{{this.title}}</li>
 
-<a method="GET" value="{{this.id}}" href="/{{../partyPlaylist.creator}}/{{../partyPlaylist.name}}/{{this.id}}" id="{{this.id}}" class="play" onclick="playSong('{{this.id}}')"><img src="/images/play (1).png" alt="" width="25"/></a>
+<a method="GET" value="{{this.id}}" href="/{{../data.partyPlaylist.creator}}/{{../data.partyPlaylist.name}}/{{this.id}}" id="{{this.id}}" class="play" onclick="playSong('{{this.id}}')"><img src="/images/play (1).png" alt="" width="25"/></a>
 
 {{/each}}
 </nav>

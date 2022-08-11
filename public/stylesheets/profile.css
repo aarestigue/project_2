@@ -21,8 +21,15 @@
 
 /* PLAYLIST SEARCH */
 
+.playlist-fullpage {
+    margin: 15px;
+    display: flex;
+    
+}
+
 .playlist-container {
     margin: 15px;
     display: flex;
+    flex-direction: column;
 }
 

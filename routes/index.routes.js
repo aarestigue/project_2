@@ -58,17 +58,21 @@ try {
   const response = await axios.get(url); */
 
  
-  let party = await Party.findOne({user, name: name})
+  const party =await Party.findOne({user, name: name})
+  .populate({
+    path : 'contributors',
+    model : 'User',
+  }) 
+
+
   
   if (!search) {
     const data = {
-      
       party,
       search,
-      
-      
-    }
+      }
     res.render('parties/party-detail', {data, user}) 
+    console.log(data)
   }
 const response = await youtube.search.list({
     part: "snippet",
@@ -160,7 +164,7 @@ router.get ("/:username/edit", (req, res, next) => {
   
   User.findOne({username:username})
   .then((user)=> {
-    console.log(user)
+    
     res.render('users/profile-edit', {user})
   })
   .catch((err) => next(err))
@@ -211,13 +215,11 @@ router.post ("/:username/create-party", fileUploader.single('imageUrl'), (req, r
  
 
   Party.create({name, creator, contributors, imageUrl})
-
   .then((party)=> User.findOneAndUpdate({username:username}, { $push: { parties: party._id } }))
-  .then((response)=> {res.redirect(`/${username}/party/${name}`)})
+  .then((response)=> {
+    res.redirect(`/${response.username}/party/${name}`)
+  })
   .catch((err) => next(err))
-
-
-  
 })
 
 //UPDATE PARTY - ADD SONGS
@@ -250,7 +252,75 @@ catch (err) {next(err)};
 router.get ("/:name/edit/party", (req, res, next) => {
   const {name} = req.params;
   const user = req.session.user;
-  res.render('parties/party-edit', {name, user})
+
+  User.find()
+  .then((allUsers) => {
+
+  Party.findOne({name:name})
+  .populate({
+    path: 'contributors',
+    model: 'User',
+    })
+  .then((party)=> {
+    
+    allUsers.forEach((user) => {
+      party.contributors.forEach((party) => {
+        if (user._id.equals(party._id)) {
+          user.isContributor = true;
+        }
+      })
+    })
+    res.render('parties/party-edit', {name, user, party, allUsers})
+  })
+})
+  .catch((err) => next(err))
+})
+
+router.post ("/:partyName/edit-party", fileUploader.single('imageUrl'), async (req, res, next) => {
+  try {
+    const {name, contributors, previousUrl} = req.body;
+  const {partyName} = req.params
+  const user = req.session.user;
+  const username = user.username;
+  let imageUrl;
+
+  if (req.file) {
+    imageUrl = req.file.path;
+  } else {
+    imageUrl = previousUrl;
+  }
+  const updatedParty = await Party.findOneAndUpdate({name: partyName}, {name, contributors, imageUrl }, {new: true})
+
+  const party = await updatedParty.populate("contributors")
+/* console.log("here => ", party.contributors.length) */
+  const forLoop = async () => {
+    for (let i = 0; i < party.contributors.length; i++) {
+        /* for (let j=0; j<party.contributors[i].parties.length; j++){
+          if (!party.contributors[i].parties._id === party._id){ */
+            await User.findOneAndUpdate({username: party.contributors[i].username}, {
+              $push: {
+                parties: party._id
+              }
+          })
+        }
+          /* else {console.log('party already exists')}
+    
+        
+          } */
+       
+
+      
+  }
+  await forLoop()
+  res.redirect(`/${username}/party/${name}`)
+  /* .then((party)=> User.findOneAndUpdate({username:username}, { $push: { parties: party._id } })) */
+  /* .then((party)=> res.redirect(`/${username}/party/${name}`)) */
+  } catch (error) {
+    next(error)
+  }
+  
+  
+
 })
 
 //DELETE PARTY
@@ -309,8 +379,19 @@ router.get ("/:username/:name/:songId", (req, res, next) => {
   const {username, name, songId} = req.params
   const user = req.session.user
   
-  Party.findOne({name: name})
-  .then((party) =>res.render('parties/party-karaoke', {user, username, name, songId, partyPlaylist : party}))
+
+ Party.findOne({name: name})
+  .then((partyPlaylist)=> {
+    
+  const data ={
+    partyPlaylist,
+    
+  }
+  res.render('parties/party-karaoke', {user, username, name, songId, data})
+  console.log(data)
+  
+  })
+  
   
   .catch((err) => next(err))
 })

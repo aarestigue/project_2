@@ -5,7 +5,11 @@
 <a href="/{{data.party.name}}/edit/party">Add contributors</a>
 </div>
 
+<div class="playlist-fullpage">
+    
 <div class="playlist-container">
+
+{{!-- SEARCH BAR AND RESULTS GO HERE --}}
 
 <section id="playlist-search"> 
 
@@ -64,4 +68,23 @@
 </section>
 
 </div>
+
+{{!-- CONTRIBUTORS GOES HERE  --}}
+
+<section id="playlist-contributors">
+
+    <h2>Contributors</h2>
+
+{{#each data.party.contributors}}
+
+<li>{{this.username}}</li>
+{{!-- <a href="/contributor/delete"><img src="/images/remove.png" alt="" width="10"></a> --}}
+
+{{/each}}
+
+</section>
+
+</div>
+
+
 
