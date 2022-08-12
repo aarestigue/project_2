@@ -30,60 +30,67 @@
  --}}
 
 
-<div class="signup-body">
-<section class="signup-container">
+<div id="signup-body">
+
+<h2 style="color: white;">Register and have fun</h2> 
+
+<div class="signup-form-box">
+
 
 
 <form class="signup-form" action="/signup" method="POST">
 
-<div class="container">
 
+
+<div class="form-row">
+     <label for="username">Username</label>
+    <input {{!-- class="form-field"  --}} type="text" name="username" placeholder="Enter Username" id="username">
+
+</div>
+
+<div class="form-row">
+   <label for="email"><b>Email</b></label>
+    <input {{!-- class="form-field" --}} type="email" name="email"placeholder="Enter Email" id="email">
     
-  
-
-
-<div class="form-field">
-
-     <label for="username"><b>Username</b>
-    <input class="form-field"  type="text" name="username" placeholder="Enter Username" id="username">
-</label>
-
-<label for="email"><b>Email</b>
-    <input class="form-field" type="email" name="email"placeholder="Enter Email" id="email">
-    </label>
-
-
-
-    <label for="password"><b>Password</b>
-    <input  class="form-field" type="password" name="password"placeholder="Enter Password" id="password">
-    </label>
-
-
-    <label for="name"><b>Name (optional)</b>
-    <input class="form-field" type="form-field" name="name"  placeholder="First_Name" id="name">
-    </label>
-
-
-    <label for="Last Name"><b>Last Name (optional)</b>
-    <input class="form-field" type="form-field" name="last_name" placeholder="Last_Name" id="last_name">
-    </label>
-
-
-<div class="signup-container-button">
-   <div >
-<button class="button-signup" type="submit">Signup!</button>
 </div>
 
 
+<div class="form-row">
+    <label for="password"><b>Password</b></label>
+    <input  {{!-- class="form-field" --}} type="password" name="password"placeholder="Enter Password" id="password">
+    
 </div>
+
+
+
+<div class="form-row">
+    <label for="name"><b>Name (optional)</b></label>
+    <input {{!-- class="form-field"  --}}type="form-field" name="name"  placeholder="First_Name" id="name">
+    
+</div>
+
+<div class="form-row">
+    <label for="Last Name"><b>Last Name (optional)</b></label>
+    <input {{!-- class="form-field"  --}}type="form-field" name="last_name" placeholder="Last_Name" id="last_name">
+    
+</div>
+
+
+
+<button class="btn btn-info" type="submit">Join</button>
+
+
 </form>
-<div>
+</div>
+
+  
  {{#if errorMessage}}
    {{errorMessage}}
 {{/if}}
-</div>
-</section>
+   </div>
+   </section>
 
+   
 </div>
 
 

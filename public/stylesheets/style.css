@@ -140,6 +140,30 @@ outline-color: rgb(255, 255, 255); */
   
   }
 
+  #signup-body {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(57, 56, 56, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    
+    }
+
+    .signup-form-box {
+      width: 35vw;
+     /*  height: 40vh; */
+      background-color: rgba(202, 210, 213, 0.1);
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2vw;
+  
+  }
+
 
 /* .container {
   display: flex;
