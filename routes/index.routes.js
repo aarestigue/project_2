@@ -206,7 +206,7 @@ router.get ("/:username/create-party", (req, res, next) => {
 
 router.post ("/:username/create-party", fileUploader.single('imageUrl'), (req, res, next) => {
  
-  const {username} = req.params.username; 
+  const username = req.params.username; 
   const user = req.session.user
   console.log(username)
   /* res.render('parties/create-party', {username}) */
@@ -218,7 +218,7 @@ router.post ("/:username/create-party", fileUploader.single('imageUrl'), (req, r
   Party.create({name, creator, contributors, imageUrl})
   .then((party)=> User.findOneAndUpdate({username:username}, { $push: { parties: party._id } }))
   .then((response)=> {
-    res.redirect(`/${response.username}/party/${name}`)
+    res.redirect(`/${response.username}/party/${name}`, {user})
   })
   .catch((err) => next(err))
 })
