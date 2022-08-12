@@ -21,16 +21,16 @@
 <nav class="navbar">
     <div class="left">
       {{#if user}}
-        <a href="/{{user.username}}/profile"><img src="/images/finallogo.png" alt=""></a>
+        <div id="logo-box"><a   href="/{{user.username}}/profile"><img src="/images/microphone_logo.png" alt="" width="33"></a><h3>Mik it up</h3></div>
       {{else}}
-        <a href="/"><img src="/images/finallogo.png" alt=""></a>
+        <div id="logo-box"><a   href="/"><img src="/images/microphone_logo.png" alt="" width="33"></a><h3 id="logo-text">Mik it up</h3></div>
       {{/if}}
     </div>
     <div class="right" id="session-btn">
        </select>
        {{#if user}}
         {{!-- <button type="button" class="btn btn-primary btn-lg"><a href="/{{user.username}}/profile">Profile</a>Large button</button> --}}
-       <button class="profile-button"><a href="/{{user.username}}/profile">Profile</a></button>
+       {{!-- <button class="profile-button"><a href="/{{user.username}}/profile">Profile</a></button> --}}
         <button><a href="/{{user.username}}/logout">Logout</a></button>
         
        {{else}}

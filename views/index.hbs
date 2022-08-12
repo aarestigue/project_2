@@ -1,20 +1,29 @@
-<div class="container">
+{{!-- <div class="container"> --}}
       
-        <div class="title">
-            <div class="content">
-                <h1>Sign in Here</h1>
-                <h2>Sing anywhere. Play your favorites albums anytime.</h2>
-                <form action="/login-create" method="GET">
+        <div class="home-container">
+            <div class="home-title">
+                <h1>Plan your next karaoke party!</h1>
+             
+                <h4>Sing anywhere, anytime.</h4>
+            </div>
+
+            <div class="home-form">
+                <form  class="form-inline"  action="/login-create" method="GET">
         
                     <div class="email" >
-                        <input type="username" name="username" placeholder="Username" value="" id="username">
-                        <button type="submit">Sign in</button>
-                      <font color="#1C1C1C"><h3>Ready to have fun ? Click in the link to create your own account </fontcolor> </font><a href="/signup">Click Here</a></h3> 
-                             
-                </div>
+                        <div class="input-group mb-3">
+                        <input class="form-control mr-ml-4" type="username" name="username" placeholder="Username" value="" id="username" />
+                        {{!-- <span class="input-group-text" id="basic-addon2">@</span> --}}
+                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Login</button>
+                        </div>
+                        
+                      <h5>If you don't have an account, you can <a href="/signup">signup here</a></h5> 
+                  
+                    </div>
     
                 </form>
             </div>
+            
         </div>
 
 

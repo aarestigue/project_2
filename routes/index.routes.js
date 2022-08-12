@@ -206,7 +206,8 @@ router.get ("/:username/create-party", (req, res, next) => {
 
 router.post ("/:username/create-party", fileUploader.single('imageUrl'), (req, res, next) => {
  
-  const username = req.params.username; 
+  const {username} = req.params.username; 
+  const user = req.session.user
   console.log(username)
   /* res.render('parties/create-party', {username}) */
 
