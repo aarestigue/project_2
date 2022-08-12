@@ -1,25 +1,37 @@
-<section class="login-container">
+{{!-- <section class="login-container"> --}}
+
+<div id="login-body">
+<div class="party-form-box">
 <form action="/login" method="POST">
 
   <div class="container">
-   <div class="username-password-login">
+<div class="form-row">
+   {{!-- <div class="username-password-login"> --}}
     <label for="uname"><b>Username</b></label>
-    
     <input type="text" name="username" value="{{username}}"placeholder="Enter Username">
+</div>
+    
+<div class="form-row">
 
     <label for="password"><b>Password</b></label>
-    <input type="password" name="password"placeholder="Enter Password">
-</div>
-<div class="button-login">
-    <button type="submit">Login</button>
-    </div>
+    <input {{!-- class="custom-file-input" --}} type="password" name="password"placeholder="Enter Password">
+</div>  
+
+
+    <button class="btn btn-info" type="submit">Login</button>
+    
   </div>
 </form>
 
-<p>If you still don't have an account, please <a href="/signup"> <b>signup</b></a></p>
-</section>
+
+
 
 
 {{#if errorMessage}}
    {{errorMessage}}
 {{/if}}
+</div>
+
+<p>If you still don't have an account, please <a href="/signup"> <b>signup</b></a></p>
+{{!-- </section> --}}
+</div>
