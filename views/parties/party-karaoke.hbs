@@ -1,5 +1,47 @@
-<h1>Party playlist</h1>
-<a href="/{{username}}/party/{{data.partyPlaylist.name}}">Edit Party</a>
+
+
+{{!-- NAV BAR STARTS HERE --}}
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <nav class="navbar navbar-dark bg-dark">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/{{user.username}}/profile">Go back</a>
+            </li>
+
+            <li class="nav-item {{!-- active --}}">
+                <a href="/{{user.username}}/party/{{data.partyPlaylist.name}}" class="nav-link" >Add songs{{!-- <span class="sr-only">(current)</span> --}}</a>
+            </li>
+            
+             <li class="nav-item">
+                <a href="/{{data.partyPlaylist.name}}/delete/party" class="nav-link" >Delete party</a>
+            </li>
+
+            <li class="nav-item">
+                <a href="/{{data.partyPlaylist.name}}/edit/party" class="nav-link">Add contributors</a>
+            </li>
+
+        </ul>
+    </div>
+    </nav>
+        
+        
+</nav>
+
+
+
+{{!-- NAV BAR FINISHES HERE --}}
+
+<div id="karaoke-body">
+
+<h2 style="color: white;">{{data.partyPlaylist.name}}</h2>
+
 
 <div id="karaoke">
 
@@ -7,12 +49,41 @@
 </div>
 
 
-<nav>
+{{!-- <nav>
 {{#each data.partyPlaylist.songs}}
 <li class="song" value="{{this.id}}">{{this.title}}</li>
 
 <a method="GET" value="{{this.id}}" href="/{{../data.partyPlaylist.creator}}/{{../data.partyPlaylist.name}}/{{this.id}}" id="{{this.id}}" class="play" onclick="playSong('{{this.id}}')"><img src="/images/play (1).png" alt="" width="25"/></a>
 
 {{/each}}
-</nav>
+</nav> --}}
 
+{{!-- PARTY PLAYLIST GOES HERE  --}}
+
+<section {{!-- id="playlist-list" --}} class="col-8 col-md-6">
+
+
+{{!-- <form action="/{{data.party.name}}/karaoke" method="get">
+<a href="/{{data.party.name}}/karaoke"><img src="/images/play (1).png" alt="" width="25"></a>
+
+<button type="submit">Start Karaoke!</button>
+</form> --}}
+
+
+<div {{!-- id="playlist-songs" --}} style="border-radius: 10px; margin:4vh;">
+    <ul class="list-group list-group-flush" > 
+
+<a href="/{{data.partyPlaylist.name}}/karaoke" class="list-group-item list-group-item-action active list-group-item-secondary opacity-50"> <img src="/images/play_karaoke.png" alt="" width="30"> Start karaoke!</a> 
+<input type="text" id="partyName" value="{{data.partyPlaylist.name}}" hidden>
+{{#each data.partyPlaylist.songs}}
+
+<a href="/{{../data.partyPlaylist.creator}}/{{../data.partyPlaylist.name}}/{{this.id}}" class="list-group-item list-group-item-action bg-light opacity-25"><img src="/images/play_black.png" alt="" width="20"/> {{this.title}}</a> 
+
+{{/each}}
+    </ul>
+
+</div>
+
+</section>
+
+</div>
