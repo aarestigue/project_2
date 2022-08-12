@@ -78,7 +78,7 @@ const response = await youtube.search.list({
     part: "snippet",
     q: `karaoke ${search}`,
     type : "video",
-    maxResults : 10,
+    maxResults : 5,
     videoEmbeddable : true,
     });
 

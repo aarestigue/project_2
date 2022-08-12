@@ -149,6 +149,14 @@ align-items: flex-start;
 
 /* ADD SONGS TO PARTY */
 
+
+.row {
+
+width: 100vw;
+display: flex;
+justify-content: center;
+
+}
 .party-menu {
 
    /*  width: 100vw;
@@ -157,3 +165,11 @@ align-items: flex-start;
 
 }
 
+#contributors-container {
+    width: 15vw;
+    background-color: rgb(56, 56, 58);
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+    padding: 1vw;
+}

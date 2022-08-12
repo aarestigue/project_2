@@ -35,7 +35,7 @@
         
     <form class="form-inline" action="/{{data.party.creator}}/party/{{data.party.name}}" method="get"/>
     <input class="form-control mr-sm-2" type="search" placeholder="Find your song" aria-label="Search" name="search" id="search" />
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
     </form>
 </nav>
 
@@ -43,33 +43,49 @@
 
 {{!-- NAV BAR FINISHES HERE --}}
 
+<div class="row">
 
+<H2 style="color: white; margin:1vw;">Welcome to your party {{data.party.name}}</H2>
 
+</div>
 
-<H1>{{data.party.name}}</H1>
 
 {{!-- <div class="playlist-fullpage"> --}}
-
-<div {{!-- class="playlist-container" --}} class="row">
-
-
-
-
-
-
+<div {{!-- class="row" --}}>
+<ul class="list-unstyled" style="width:100vw; display: flex; color:white; flex-direction:column; justify-content:center; align-items:center">
 {{#if data.songQuery}}
 {{#each data.songQuery}}
-<section class="col-8 col-md-6">
-<li>{{this.snippet.title}}</li>
 
-<form action="/add-song/{{this.id.videoId}}/{{../data.party._id}}/{{this.snippet.title}}" method="post" id="{{this.id.videoId}}" >
-<input type="text" name="songId" value="{{this.id.videoId}}" hidden>
-<input type="text" name="'songTitle" value="{{this.snippet.title}}" id="songTitle" hidden>
-<button type="Submit" >Add</button>
-</form>
+<section class="col-8 col-md-6">
+
+
+    {{!-- <li class="media my-4"> --}}
+
+        <div {{!-- class="media-body" --}}>
+            <li>{{this.snippet.title}}</li>
+        </div>
+
+            <form action="/add-song/{{this.id.videoId}}/{{../data.party._id}}/{{this.snippet.title}}" method="post" id="{{this.id.videoId}}" >
+            <input type="text" name="songId" value="{{this.id.videoId}}" hidden>
+            <input type="text" name="'songTitle" value="{{this.snippet.title}}" id="songTitle" hidden>
+            <button class="btn btn-outline-light my-2 my-sm-0" type="Submit" >Add</button>
+            </form>
+   {{!--  </li> --}}
+
 </section>   
+
 {{/each}}
 {{/if}}
+</ul>
+</div>
+
+<div {{!-- class="playlist-container" --}} class="row" >
+
+
+
+
+
+
 
 
 
@@ -78,21 +94,21 @@
 <section {{!-- id="playlist-list" --}} class="col-8 col-md-6">
 
 
-<form action="/{{data.party.name}}/karaoke" method="get">
+{{!-- <form action="/{{data.party.name}}/karaoke" method="get">
 <a href="/{{data.party.name}}/karaoke"><img src="/images/play (1).png" alt="" width="25"></a>
-<input type="text" id="partyName" value="{{data.party.name}}" hidden>
+
 <button type="submit">Start Karaoke!</button>
-</form>
+</form> --}}
 
 
-<div {{!-- id="playlist-songs" --}}>
-    <ul class="list-group list-group-flush"> 
+<div {{!-- id="playlist-songs" --}} style="border-radius: 10px;">
+    <ul class="list-group list-group-flush" > 
 
-<a class="list-group-item list-group-item-action active list-group-item-secondary opacity-50">Start karaoke</a> 
-
+<a href="/{{data.party.name}}/karaoke" class="list-group-item list-group-item-action active list-group-item-secondary opacity-50"> <img src="/images/play_karaoke.png" alt="" width="30"> Start karaoke!</a> 
+<input type="text" id="partyName" value="{{data.party.name}}" hidden>
 {{#each data.party.songs}}
 
-<a class="list-group-item list-group-item-action bg-light opacity-25">{{this.title}}</a> 
+<a href="/{{../data.party.creator}}/{{../data.party.name}}/{{this.id}}" class="list-group-item list-group-item-action bg-light opacity-25"><img src="/images/play_black.png" alt="" width="20"/> {{this.title}}</a> 
 
 {{/each}}
     </ul>
@@ -103,18 +119,28 @@
 
 {{!-- CONTRIBUTORS GOES HERE  --}}
 
+<div id="contributors-container">
 <section {{!-- id="playlist-contributors" --}} class="col-4 col-md-3">
 
-    <h2>Contributors</h2>
+    <h5 style="color: rgb(34, 132, 230) ;">Contributors</h5>
 
+<ul class="list-unstyled">
 {{#each data.party.contributors}}
 
-<li>{{this.username}}</li>
+<li class="media my-4">
+        <img class="mr-3" src="/images/microphone.png" alt="image" width="25px"/>
+    <div class="media-body">
+        <h5 class="mt-0 mb-1">{{this.username}}</h5>
+    </div>
 {{!-- <a href="/contributor/delete"><img src="/images/remove.png" alt="" width="10"></a> --}}
-
+</li>
 {{/each}}
+</ul>
 
 </section>
+</div>
+
+{{!-- CONTRIBUTORS ENDS HERE --}}
 
 </div>
 
