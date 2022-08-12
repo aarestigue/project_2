@@ -1,27 +1,14 @@
 <div id="party-body">
 
+
 {{!-- NAV BAR STARTS HERE --}}
-<div class="party-menu">
+<div class="row">
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <nav class="navbar navbar-dark bg-dark">
-{{!-- Search bar --}}
 
-<section id="playlist-search"> 
-
-<form action="/{{data.party.creator}}/party/{{data.party.name}}" method="get">
-<label for="search">Find your song</label>
-
-<input type="text" name="search" id="search" value="" >
-{{!-- <input type="text" name="partyId" value="{{party._id}}" hidden> --}}
-
-
-<button type="submit">search</button>
-
-</form>
-
-{{!-- Search bar ends here --}}
-
-
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
@@ -43,33 +30,36 @@
 
         </ul>
     </div>
-
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        </nav>
     </nav>
+        
+        
+    <form class="form-inline" action="/{{data.party.creator}}/party/{{data.party.name}}" method="get"/>
+    <input class="form-control mr-sm-2" type="search" placeholder="Find your song" aria-label="Search" name="search" id="search" />
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
+
 </div>
 
 {{!-- NAV BAR FINISHES HERE --}}
 
 
+
+
 <H1>{{data.party.name}}</H1>
 
-<div class="playlist-fullpage">
+{{!-- <div class="playlist-fullpage"> --}}
 
-<div class="playlist-container">
-
-
+<div {{!-- class="playlist-container" --}} class="row">
 
 
-<div>
+
+
+
 
 {{#if data.songQuery}}
 {{#each data.songQuery}}
-
+<section class="col-8 col-md-6">
 <li>{{this.snippet.title}}</li>
 
 <form action="/add-song/{{this.id.videoId}}/{{../data.party._id}}/{{this.snippet.title}}" method="post" id="{{this.id.videoId}}" >
@@ -77,18 +67,16 @@
 <input type="text" name="'songTitle" value="{{this.snippet.title}}" id="songTitle" hidden>
 <button type="Submit" >Add</button>
 </form>
+</section>   
 {{/each}}
 {{/if}}
 
-</div>
 
-</section>   
 
 {{!-- PARTY PLAYLIST GOES HERE  --}}
 
-<section id="playlist-list">
+<section {{!-- id="playlist-list" --}} class="col-8 col-md-6">
 
-<h2>{{data.party.name}} playlist</h2>
 
 <form action="/{{data.party.name}}/karaoke" method="get">
 <a href="/{{data.party.name}}/karaoke"><img src="/images/play (1).png" alt="" width="25"></a>
@@ -96,22 +84,26 @@
 <button type="submit">Start Karaoke!</button>
 </form>
 
-<div id="playlist-songs">
+
+<div {{!-- id="playlist-songs" --}}>
+    <ul class="list-group list-group-flush"> 
+
+<a class="list-group-item list-group-item-action active list-group-item-secondary opacity-50">Start karaoke</a> 
+
 {{#each data.party.songs}}
 
-<li>{{this.title}}</li>
+<a class="list-group-item list-group-item-action bg-light opacity-25">{{this.title}}</a> 
 
 {{/each}}
+    </ul>
 
 </div>
 
 </section>
 
-</div>
-
 {{!-- CONTRIBUTORS GOES HERE  --}}
 
-<section id="playlist-contributors">
+<section {{!-- id="playlist-contributors" --}} class="col-4 col-md-3">
 
     <h2>Contributors</h2>
 
@@ -126,7 +118,11 @@
 
 </div>
 
+
+
 </div>
+
+
 
 
 

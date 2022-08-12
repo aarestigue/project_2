@@ -150,7 +150,10 @@ align-items: flex-start;
 /* ADD SONGS TO PARTY */
 
 .party-menu {
-    width: 100vw;
-    display: flex;
+
+   /*  width: 100vw;
+    display: flex; */
+    background-color: black;
 
 }
+
