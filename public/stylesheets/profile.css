@@ -3,7 +3,7 @@
 #profile-body {
 width: 100vw;
 /* height: 100vh; */
-background-color: rgba(57, 56, 56, 0.837);
+background-color: rgba(57, 56, 56, 0.8);
 display: flex;
 flex-direction: column;
 align-items: flex-start;
@@ -35,12 +35,14 @@ align-items: flex-start;
   
     padding-top: 1vh;
     font-size: 16px;
+    color: white;
 }
 
 .profile-container {
    width: 70vw;
    /* height: 50vh; */
    margin-left: 2vw;
+
    border: 10px;
    border-color: white;
    border-width: 2px;
@@ -48,7 +50,7 @@ align-items: flex-start;
    background-color: rgba(202, 210, 213, 0.1);
    border-radius: 5px;
    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+   color: white;
 }
 
 .profile-parties-menu {
@@ -94,10 +96,61 @@ align-items: flex-start;
 #party-body {
     width: 100vw;
     height: 100vh;
-    background-color: rgba(57, 56, 56, 0.7);
+    background-color: rgba(57, 56, 56, 0.8);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     
     
     }
+
+
+
+/* create party */
+.party-form-main {
+    width: 100vw;
+    height: 70vh;
+   /*  background-color: black; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.party-form-box {
+    width: 35vw;
+    height: 40vh;
+    background-color: rgba(202, 210, 213, 0.1);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2vw;
+
+}
+
+.party-form-create{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: center;
+    
+}
+
+.form-row {
+    margin: 0.8vw;
+    color: whitesmoke;
+}
+
+.custom-file {
+    margin-bottom: 0.8vw;
+}
+
+/* ADD SONGS TO PARTY */
+
+.party-menu {
+    width: 100vw;
+    display: flex;
+
+}

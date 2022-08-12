@@ -1,15 +1,10 @@
-<div>
-<H1>{{data.party.name}}</H1>
-<a href="/{{user.username}}/profile">Go back</a>
-<a href="/{{data.party.name}}/delete/party" >Delete party</a>
-<a href="/{{data.party.name}}/edit/party">Add contributors</a>
-</div>
+<div id="party-body">
 
-<div class="playlist-fullpage">
-    
-<div class="playlist-container">
-
-{{!-- SEARCH BAR AND RESULTS GO HERE --}}
+{{!-- NAV BAR STARTS HERE --}}
+<div class="party-menu">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <nav class="navbar navbar-dark bg-dark">
+{{!-- Search bar --}}
 
 <section id="playlist-search"> 
 
@@ -23,6 +18,51 @@
 <button type="submit">search</button>
 
 </form>
+
+{{!-- Search bar ends here --}}
+
+
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/{{user.username}}/profile">Go back</a>
+            </li>
+
+            <li class="nav-item active">
+                <a href="/{{user.username}}/party/{{data.party.name}}" class="nav-link" >Add songs<span class="sr-only">(current)</span></a>
+            </li>
+            
+             <li class="nav-item">
+                <a href="/{{data.party.name}}/delete/party" class="nav-link" >Delete party</a>
+            </li>
+
+            <li class="nav-item">
+                <a href="/{{data.party.name}}/edit/party" class="nav-link">Add contributors</a>
+            </li>
+
+        </ul>
+    </div>
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        </nav>
+    </nav>
+</div>
+
+{{!-- NAV BAR FINISHES HERE --}}
+
+
+<H1>{{data.party.name}}</H1>
+
+<div class="playlist-fullpage">
+
+<div class="playlist-container">
+
+
 
 
 <div>
@@ -83,6 +123,8 @@
 {{/each}}
 
 </section>
+
+</div>
 
 </div>
 

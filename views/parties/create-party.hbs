@@ -33,47 +33,59 @@
     
 
 </nav>
+
 </div>
 
-<h1>Create a Party</h1>
+<div class="party-form-main">
 
-<div>
+<h2 style="color: rgb(239, 210, 163); font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif " >Time to have fun </h2>
 
 {{!-- FORM  --}}
 
-    <form  method="post" action="/{{username}}/create-party" enctype="multipart/form-data">
+<div class="party-form-box">
+
+   <form  class="party-form-create" method="post" action="/{{username}}/create-party" enctype="multipart/form-data">
 
     <div class="form-row">
-        <div class="col-5">
-           {{!--  <label for="name">Party name</label> --}}
-            <input type="text" name="name" id="name" class="form-control" placeholder="Party name" />
+          <label for="name">Party name</label>
+        <div class="col-sm-15">
+           <input type="text" name="name" id="name" class="form-control" placeholder="Party name" />
         </div>
-
-{{!-- <label for="creator">Creator</label> --}}
-<input type="text" name="creator" id="creator" value="{{username}}" hidden/>
-
-<label for="contributors">Contributors</label>
-
-
-<select  name="contributors[]" id="contributors"  size="2"  class="js-example-basic-multiple" multiple="multiple">
-    
-    {{#each allUsers}}
-    <option value="{{this._id}}" >{{this.username}}</option>
-    {{/each}}
-</select>
-
-
-    <div>
-        <label for='imageUrl'>Party Image</label>
-        <input type='file' name='imageUrl' id='imageUrl' class='form-control-file' />
     </div>
 
-        <button type='submit' class='btn btn-primary'>Create Party!</button>
-        
-        </div>
-    </form>
-</div>
+    {{!-- <label for="creator">Creator</label> --}}
+    <input type="text" name="creator" id="creator" value="{{username}}" hidden/>
 
+    <div class="form-row">
+            <label for="contributors">Contributors</label>
+
+        <div class="col-sm-15">
+
+            <select  name="contributors[]" id="contributors"  size="2"  class="js-example-basic-multiple" style="width:14vw; height:5vh; color:black" multiple="multiple">
+    
+            {{#each allUsers}}
+            <option style="color: rgb(38, 37, 37) ;" value="{{this._id}}" >{{this.username}}</option>
+            {{/each}}
+             </select>
+
+        </div>
+    </div>
+
+
+    <div class="custom-file">
+        
+        <input type='file' name='imageUrl' id='imageUrl' class='{{!-- form-control-file  --}}custom-file-input"' />
+       <label for='imageUrl' class="custom-file-label">Choose a Party Image</label>
+    </div>
+
+   
+
+        <button type='submit' class="btn btn-info" data-toggle="button" aria-pressed="false" autocomplete="off">Create Party</button>
+        
+        
+            </form>
+        </div>
+    </div>
 </div>
 
 <script>$(document).ready(function() {
