@@ -1,16 +1,19 @@
-# WWK
+# MiK It Up
 
-(https://github.com/louisrabit/read-me/blob/main/LICENSE) --- mudar para badge 
 
 # About the project
 
+MiK It Up , is a second IronHack project ,  made in the sixth week of the Web Developer Bootcamp  . The idea of this project was to provide a web app for all karaoke users, offering a complete and great experience in relaxed times with others . 
+The highlights of this project are the user's profile and the party . The profile provides the user with their own account where they can have their own playlist. In this tab, the user can edit it, delete it , log out and even go to the party. Party is an extra, here a user can invite other players to join a separate party, choose a picture as an avatar and the most important thing is that each participant can choose their own song to include in the party.
+
 Problems: 
-Organize Karaoke days
-Give everyone a chance to pick their favorite music
-Avoid staying with only one type of music for too long
+Organize Karaoke days .
+Give everyone a chance to pick their favorite music .
+Avoid staying with only one type of music for too long .
+
 
 Our solution:
-WWK is a tool that makes karaoke party organization easier. 
+MiK It Up is a tool that makes karaoke party organization easier. 
 Everyone at the party can choose their favorite music to sing and not have to worry about the order being respected!
 This tool is recommended for all karaoke lovers and friends. With extras, the app will provide share, public and save the moments of intense fun.
 
@@ -66,28 +69,29 @@ This tool is recommended for all karaoke lovers and friends. With extras, the ap
 
 
 # Extra points 
- - web access without account login
-- Share music .
-- Have a followers 
-- Private or public account 
-- Have a Board with most popular songs ( implement cookies)
-- Implement passport 
-- Join people  in 1 room to sing the same song . 
-- Able to post is own record songs 
-- Have coments 
-- Live stream 
+
+- Private or public account (Half Done , public account isn`t provided )
+- Have a Board with most popular songs (Done)
+- Implement passport (Done)
+- Join people  in 1 room to sing the same song (Done)
+
+- Able to post is own record songs (undone) .
+- Have coments (undone).
+- Live stream ( undone).
+- Have a followers (undone).
+- Have a followers (undone)
+
  
 # Getting Start ( what the user needs to have acess/ use the app)
-The user to be able to use the platform will have the option to register if he wants, first to create a personal account, and also have an option without authorization of entry, will have limited access to use it .
+The user to be able to use the platform will have the option to register ,  to create a personal account . 
 
 
 # Models
 
-Profile model { name , email , password , favorites } 
+Profile model { name , email , password , favorites }  
 Playlist
 Party
 Song
-Post
 
 # Technologies
 
@@ -128,16 +132,21 @@ Post
 
 - npm ironlaucher
 - npx
+-  npm  youtube-api-v3
+
 
 # API"s
 
 (https://www.karafun.es/developers/)
 (https://developers.google.com/identity/sign-in/web/sign-in)
+(https://www.npmjs.com/package/youtube-api-v3-search)
+
 
 
 # Backlog
 
 ![](https://trello.com/b/Ni3giVKf/ironhackproject)
+
 
  
  ### Git
